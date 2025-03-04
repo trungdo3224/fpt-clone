@@ -2,33 +2,13 @@ import React from 'react';
 
 const PromotionBanners = () => {
   return (
-    <div className="my-12">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-          <img 
-            src="https://i.ibb.co/Qp9VKBM/fpt-wifi.jpg" 
-            alt="FPT WiFi & Kết nối siêu vượt trội" 
-            className="w-full h-auto"
-          />
-        </div>
-        
-        <div className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-          <img 
-            src="https://i.ibb.co/Qp9VKBM/fpt-live.jpg" 
-            alt="FPT Live - Quà bạn về nhà" 
-            className="w-full h-auto"
-          />
-        </div>
-      </div>
-      
-      <div className="mt-6">
-        <div className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-          <img 
-            src="https://i.ibb.co/Qp9VKBM/fpt-internet.jpg" 
-            alt="Tư vấn ngay Internet FPT" 
-            className="w-full h-auto"
-          />
-        </div>
+    <div class='grid grid-cols-2 gap-4 h-96'>
+      <div class='bg-green-500 p-6 rounded-lg bg-[url(images/fpt-wifi-6-ket-noi-sieu-vuot-troi.jpg)] bg-cover bg-center bg-no-repeat'></div>
+
+      <div class='grid grid-rows-2 gap-4'>
+        <div class='bg-orange-200 p-4 flex items-center rounded-lg bg-[url(images/tiktok-fpt-live-qua-bay-ve-nha.jpg)] bg-cover bg-center bg-no-repeat'></div>
+
+        <div class='bg-yellow-200 p-4 flex items-center rounded-lg bg-[url(images/dangkylapdatinternet.webp)] bg-cover bg-center bg-no-repeat'></div>
       </div>
     </div>
   );

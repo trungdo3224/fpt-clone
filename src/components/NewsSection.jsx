@@ -30,8 +30,8 @@ const NewsSection = () => {
 
   return (
     <div className="my-12">
-      <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">Tin tức</h2>
-      <p className="text-center text-gray-600 mb-8">Thông cáo báo chí</p>
+      <h2 className="text-4xl font-bold text-center text-gray-800 mb-2">Tin tức</h2>
+      <p className="text-center text-xl text-gray-600 mb-8">Thông cáo báo chí</p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {newsItems.map((item) => (

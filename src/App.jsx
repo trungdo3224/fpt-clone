@@ -15,7 +15,7 @@ function App() {
       <Header />
       <Banner />
       <QuickLinks />
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-16 py-12">
         <PackageSection />
         <CategorySection />
         <PromotionBanners />

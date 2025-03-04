@@ -26,8 +26,8 @@ const QuickLinks = () => {
               <FaRegCreditCard className="text-fpt-blue text-xl" />
             </div>
             <div>
-              <h3 className="font-medium text-gray-800">Tiện điện</h3>
-              <p className="text-sm text-gray-500">Đóng tiền trực tuyến dễ dàng</p>
+              <h3 className="font-medium text-gray-800">Tích điểm</h3>
+              <p className="text-sm text-gray-500">Siêu tiện lợi & dễ dàng</p>
             </div>
             <div className="ml-auto">
               <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

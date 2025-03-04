@@ -1,29 +1,34 @@
 import React, { useState } from 'react';
-import { FaSearch, FaPhoneAlt } from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
 
 const Header = () => {
   const [showProductsDropdown, setShowProductsDropdown] = useState(false);
   const [showSupportDropdown, setShowSupportDropdown] = useState(false);
+  const [showNews, setShowNews] = useState(false);
+  const [showEndow, setShowEndow] = useState(false);
+  const [showOthers, setShowOthers] = useState(false);
 
   return (
     <header>
-      <div className="bg-fpt-blue text-white py-1 px-4">
+      <div className="bg-fpt-blue text-white py-3 px-4">
         <div className="container mx-auto flex justify-between items-center text-xs">
-          <div>
-            <span>Kênh kinh doanh</span> | <span>Kênh hỗ trợ khách hàng</span>
+          <div className='flex flex-row gap-2'>
+            <a href='#'><span>Kênh kinh doanh</span></a> |
+            <a href='#'><span>Kênh hỗ trợ khách hàng</span></a>
           </div>
           <div>
-            <span>Hotline hỗ trợ miễn phí: <strong>094.996.9962</strong></span>
+            <span>Hotline hỗ trợ miễn phí : <strong>094.996.9962</strong></span>
           </div>
         </div>
       </div>
       
       <div className="bg-white py-2 px-4 shadow-sm">
         <div className="container mx-auto flex justify-between items-center">
+        <img src="/fpt-logo.svg" alt="FPT Logo" className="h-12" />
           <div className="flex items-center space-x-8">
-            <img src="/fpt-logo.svg" alt="FPT Logo" className="h-12" />
             
-            <nav className="hidden md:flex space-x-6">
+            
+            <nav className="hidden md:flex space-x-12">
               <div className="group relative">
                 <a 
                   href="#" 
@@ -129,6 +134,7 @@ const Header = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                   </svg>
                 </a>
+                
               </div>
               
               <div className="group relative">
@@ -226,22 +232,32 @@ const Header = () => {
                   </div>
                 )}
               </div>
+              <div className="group relative">
+                <a 
+                  href="#" 
+                  className="text-gray-700 hover:text-fpt-red font-medium flex items-center"
+                  onMouseEnter={() => setShowOthers(true)}
+                  onMouseLeave={() => setShowOthers(false)}
+                >
+                  Khác
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </a>
+              </div>
             </nav>
           </div>
           
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center">
             <div className="relative">
               <input
                 type="text"
                 placeholder="Tìm kiếm"
-                className="bg-gray-100 rounded-full py-1 px-4 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-fpt-red"
+                className="bg-gray-100 rounded-full py-3 px-6 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-fpt-red"
               />
-              <FaSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <FaSearch className="absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-400" />
             </div>
-            
-            <button className="bg-fpt-red text-white rounded-full py-1 px-4 text-sm font-medium hover:bg-red-700 transition">
-              Đăng nhập
-            </button>
+
           </div>
         </div>
       </div>
