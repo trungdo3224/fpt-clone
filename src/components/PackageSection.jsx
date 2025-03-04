@@ -93,7 +93,7 @@ const PackageSection = () => {
 
   return (
     <div className='my-8'>
-      <h2 className='text-5xl font-bold text-center text-gray-800 mb-2'>
+      <h2 className='text-4xl md:text-5xl font-bold text-center text-gray-800 mb-2'>
         Gói đề xuất
       </h2>
       <p className='text-center text-xl text-gray-600 mb-8'>
@@ -102,11 +102,11 @@ const PackageSection = () => {
       </p>
 
       <div className='relative'>
-        <div className='flex flex-row justify-center gap-4'>
+        <div className='flex flex-row justify-center gap-4 overflow-x-auto md:overflow-x-hidden pb-4 md:pb-0'> {/* Added overflow-x-auto for mobile scroll */}
           {visiblePackages.map((pkg) => (
             <div
               key={pkg.id}
-              className='package-card bg-white rounded-lg shadow-md overflow-hidden w-[380px]'
+              className='package-card bg-white rounded-lg shadow-md overflow-hidden w-full sm:w-[calc(50%-8px)] md:w-[380px] min-w-[280px]' // Adjusted width for responsiveness
             >
               <div
                 className={`bg-opacity-20 p-6 flex flex-col items-center w-full h-72 bg-[url(${pkg.backgroundImage})] bg-center bg-cover bg-no-repeat`}
@@ -145,7 +145,7 @@ const PackageSection = () => {
 
         {/* Navigation arrows */}
         <button
-          className={`absolute -left-12 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10 hidden md:block ${
+          className={`absolute left-0 md:-left-12 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10 hidden md:block ${
             startIndex === 0
               ? 'opacity-50 cursor-not-allowed'
               : 'hover:bg-gray-100'
@@ -169,7 +169,7 @@ const PackageSection = () => {
           </svg>
         </button>
         <button
-          className={`absolute -right-12 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10 hidden md:block ${
+          className={`absolute right-0 md:-right-12 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10 hidden md:block ${
             startIndex >= packages.length - 4
               ? 'opacity-50 cursor-not-allowed'
               : 'hover:bg-gray-100'
