@@ -23,6 +23,7 @@ const Header = () => {
         {
           id: 1,
           title: 'Internet cá nhân',
+          href: '/internet-ca-nhan',
         },
         {
           id: 2,
@@ -222,11 +223,11 @@ const Header = () => {
       <div className='bg-fpt-blue text-white py-3 px-4'>
         <div className='container mx-auto flex justify-between items-center text-xs'>
           <div className='hidden sm:flex flex-row gap-2'>
-            <a href='#'>
+            <a href='/internet-ca-nhan' className='hover:text-fpt-orange'>
               <span>Khách hàng cá nhân</span>
             </a>{' '}
             |
-            <a href='#'>
+            <a href='#' className='hover:text-fpt-orange'>
               <span>Khách hàng doanh nghiệp</span>
             </a>
           </div>
@@ -241,7 +242,9 @@ const Header = () => {
       <div className='bg-white py-2 px-4 shadow-sm'>
         <div className='container mx-auto flex justify-between items-center'>
           <div className='flex items-center'>
-            <img src='/fpt-logo.svg' alt='FPT Logo' className='h-8 sm:h-12' />
+            <a href='/'>
+              <img src='/fpt-logo.svg' alt='FPT Logo' className='h-8 sm:h-12' />
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -264,21 +267,24 @@ const Header = () => {
               <CustomDropDown
                 trigger='hover'
                 isTitleLink={false}
-                flexDirection='row'
+                isFull={true}
+                useGrid={true}
                 items={showProductsDropdownItems}
                 title={<span style={customTitleStyle}>Sản phẩm dịch vụ</span>}
               />
               <CustomDropDown
                 trigger='hover'
                 isTitleLink={true}
-                flexDirection='column'
+                isFull={false}
                 items={showNewsDropdownItems}
-                title={<span style={customTitleStyle}>Tin tức & khuyến mãi</span>}
+                title={
+                  <span style={customTitleStyle}>Tin tức & khuyến mãi</span>
+                }
               />
               <CustomDropDown
                 trigger='hover'
                 isTitleLink={true}
-                flexDirection='column'
+                isFull={false}
                 items={showPromoteDropdownItems}
                 title={<span style={customTitleStyle}>Ưu đãi</span>}
               />
@@ -286,13 +292,14 @@ const Header = () => {
               <CustomDropDown
                 trigger='hover'
                 items={showSupportDropdownItems}
+                isFull={true}
+                useGrid={true}
                 title={<span style={customTitleStyle}>Hỗ trợ</span>}
               />
 
               <CustomDropDown
                 trigger='hover'
                 items={showOthersDropdownItems}
-                flexDirection='column'
                 isTitleLink={true}
                 title={<span style={customTitleStyle}>Khác</span>}
               />
@@ -301,12 +308,7 @@ const Header = () => {
 
           <div className='hidden md:hidden lg:flex items-center'>
             <div className='relative'>
-              <input
-                type='text'
-                placeholder='Tìm kiếm'
-                className='bg-gray-100 rounded-full py-3 px-6 text-sm focus:outline-none focus:ring-2 focus:ring-fpt-red'
-              />
-              <FaSearch className='absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-400' />
+              <FaSearch className='absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer' />
             </div>
           </div>
         </div>
@@ -317,7 +319,9 @@ const Header = () => {
         <div className='md:flex lg:hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-40'>
           <div className='fixed inset-y-0 right-0 max-w-xs w-full bg-white shadow-xl z-50 overflow-y-auto'>
             <div className='p-4 border-b flex justify-between items-center'>
-              <img src='/fpt-logo.svg' alt='FPT Logo' className='h-8' />
+              <a href='/'>
+                <img src='/fpt-logo.svg' alt='FPT Logo' className='h-8' />
+              </a>
               <button
                 onClick={toggleMobileMenu}
                 className='text-gray-700 hover:text-fpt-red focus:outline-none'

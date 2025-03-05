@@ -7,7 +7,9 @@ const Footer = () => {
       <div className='container mx-auto px-4'>
         <div className='flex flex-wrap'>
           <div className='w-full md:w-1/4 mb-8'>
-            <img src='/fpt-logo.svg' alt='FPT Logo' className='h-12 mb-4' />
+            <a href='/'>
+              <img src='/fpt-logo.svg' alt='FPT Logo' className='h-12 mb-4' />
+            </a>
             <p className='text-sm text-gray-600 mb-4'>
               CÔNG TY TNHH MTV VIỄN THÔNG QUỐC TẾ FPT
             </p>
