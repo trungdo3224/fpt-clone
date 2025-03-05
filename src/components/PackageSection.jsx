@@ -79,17 +79,32 @@ const PackageSection = () => {
     },
   ];
 
+  const getVisibleCards = () => {
+    if (window.innerWidth >= 1024) return 4; // lg screens
+    if (window.innerWidth >= 768) return 2;  // md screens
+    return 1; // sm screens
+  };
+
+  const [visibleCards, setVisibleCards] = useState(getVisibleCards());
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setVisibleCards(getVisibleCards());
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const handlePrevious = () => {
     setStartIndex((prev) => Math.max(0, prev - 1));
   };
 
   const handleNext = () => {
-    setStartIndex((prev) => Math.min(packages.length - 4, prev + 1));
+    setStartIndex((prev) => Math.min(packages.length - visibleCards, prev + 1));
   };
 
-  // Get the 4 packages to display based on the current startIndex
-  const visiblePackages = packages.slice(startIndex, startIndex + 4);
-  const packageImages = [, '', '', '', ''];
+  const visiblePackages = packages.slice(startIndex, startIndex + visibleCards);
 
   return (
     <div className='my-8'>
@@ -102,11 +117,11 @@ const PackageSection = () => {
       </p>
 
       <div className='relative'>
-        <div className='flex flex-row justify-center gap-4 overflow-x-auto md:overflow-x-hidden pb-4 md:pb-0'> {/* Added overflow-x-auto for mobile scroll */}
+        <div className='flex flex-row justify-center gap-4'>
           {visiblePackages.map((pkg) => (
             <div
               key={pkg.id}
-              className='package-card bg-white rounded-lg shadow-md overflow-hidden w-full sm:w-[calc(50%-8px)] md:w-[380px] min-w-[280px]' // Adjusted width for responsiveness
+              className='package-card bg-white rounded-lg shadow-md overflow-hidden w-full lg:w-[calc(25%-12px)] md:w-[calc(50%-8px)]'
             >
               <div
                 className={`bg-opacity-20 p-6 flex flex-col items-center w-full h-72 bg-[url(${pkg.backgroundImage})] bg-center bg-cover bg-no-repeat`}
@@ -143,9 +158,9 @@ const PackageSection = () => {
           ))}
         </div>
 
-        {/* Navigation arrows */}
+        {/* Navigation arrows - now always visible */}
         <button
-          className={`absolute left-0 md:-left-12 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10 hidden md:block ${
+          className={`absolute -left-12 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10 ${
             startIndex === 0
               ? 'opacity-50 cursor-not-allowed'
               : 'hover:bg-gray-100'
@@ -169,13 +184,13 @@ const PackageSection = () => {
           </svg>
         </button>
         <button
-          className={`absolute right-0 md:-right-12 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10 hidden md:block ${
-            startIndex >= packages.length - 4
+          className={`absolute -right-12 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10 ${
+            startIndex >= packages.length - visibleCards
               ? 'opacity-50 cursor-not-allowed'
               : 'hover:bg-gray-100'
           }`}
           onClick={handleNext}
-          disabled={startIndex >= packages.length - 4}
+          disabled={startIndex >= packages.length - visibleCards}
         >
           <svg
             className='w-6 h-6 text-gray-600'
