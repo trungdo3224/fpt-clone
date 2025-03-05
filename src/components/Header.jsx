@@ -6,12 +6,17 @@ const Header = () => {
   const [showSupportDropdown, setShowSupportDropdown] = useState(false);
   const [showNewsDropdown, setShowNewsDropdown] = useState(false);
   const [showUuDaiDropdown, setShowUuDaiDropdown] = useState(false);
-  const [showKhacDropdown, setShowKhacDropdown] = useState(false);
-  const [showOthers, setShowOthers] = useState(false);
+  const [showOthers, setShowOthersDropdown] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSubmenuOpen, setMobileSubmenuOpen] = useState('');
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+    setMobileSubmenuOpen('');
+  };
+
+  const toggleMobileSubmenu = (menu) => {
+    setMobileSubmenuOpen(mobileSubmenuOpen === menu ? '' : menu);
   };
 
   return (
@@ -35,7 +40,7 @@ const Header = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:flex lg:hidden flex items-center">
             <button
               onClick={toggleMobileMenu}
               className="text-gray-700 hover:text-fpt-red focus:outline-none"
@@ -49,7 +54,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:hidden lg:flex items-center space-x-8">
             <nav className="flex space-x-12">
               <div className="group relative" onMouseEnter={() => setShowProductsDropdown(true)} onMouseLeave={() => setShowProductsDropdown(false)}>
                 <a
@@ -62,12 +67,8 @@ const Header = () => {
                   </svg>
                 </a>
 
-                {/* Dropdown content */}
                 {showProductsDropdown && (
-                  <div
-                    className="absolute left-0 mt-2 w-[800px] bg-white shadow-lg rounded-md z-50 p-6 grid grid-cols-4 gap-6"
-                  >
-                    {/* ... (Product dropdown content - unchanged) */}
+                  <div className="absolute left-0 mt-2 w-[800px] bg-white shadow-lg rounded-md z-50 p-6 grid grid-cols-4 gap-6">
                     <div>
                       <div className="flex items-center mb-4">
                         <div className="mr-2">
@@ -128,55 +129,34 @@ const Header = () => {
                         <li><a href="#" className="text-gray-600 hover:text-fpt-red text-sm">F-Safe Go</a></li>
                       </ul>
                     </div>
-
-                    <div className="col-span-4">
-                      <div className="flex items-center mb-4">
-                        <div className="mr-2">
-                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                          </svg>
-                        </div>
-                        <h3 className="font-medium text-gray-800">Sức khỏe & Y Tế</h3>
-                      </div>
-                      <ul className="space-y-2 pl-8">
-                        <li><a href="#" className="text-gray-600 hover:text-fpt-red text-sm">FPT MediCare</a></li>
-                      </ul>
-                    </div>
                   </div>
                 )}
               </div>
 
-              <div className="group relative"  onMouseEnter={() => setShowNewsDropdown(true)} onMouseLeave={() => setShowNewsDropdown(false)}>
-                <a href="#"
-                  className="text-gray-700 hover:text-fpt-red font-medium flex items-center"
-                >
+              <div className="group relative" onMouseEnter={() => setShowNewsDropdown(true)} onMouseLeave={() => setShowNewsDropdown(false)}>
+                <a href="#" className="text-gray-700 hover:text-fpt-red font-medium flex items-center">
                   Tin tức &amp; Khuyến mãi
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                   </svg>
                 </a>
                 {showNewsDropdown && (
-                  <div
-                    className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 p-2"
-                  >
+                  <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 p-2">
                     <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Tin tức</a>
                     <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Khuyến mãi</a>
                   </div>
                 )}
               </div>
 
-              <div className="group relative"  onMouseEnter={() => setShowUuDaiDropdown(true)} onMouseLeave={() => setShowUuDaiDropdown(false)}>
-                <a href="#" className="text-gray-700 hover:text-fpt-red font-medium flex items-center"
-                >
+              <div className="group relative" onMouseEnter={() => setShowUuDaiDropdown(true)} onMouseLeave={() => setShowUuDaiDropdown(false)}>
+                <a href="#" className="text-gray-700 hover:text-fpt-red font-medium flex items-center">
                   Ưu đãi
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                   </svg>
                 </a>
                 {showUuDaiDropdown && (
-                  <div
-                    className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 p-2"
-                  >
+                  <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 p-2">
                     <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Ưu đãi mới</a>
                     <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Combo tiết kiệm</a>
                     <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Khách hàng thân thiết</a>
@@ -184,23 +164,16 @@ const Header = () => {
                 )}
               </div>
 
-              <div className="group relative"  onMouseEnter={() => setShowSupportDropdown(true)} onMouseLeave={() => setShowSupportDropdown(false)}>
-                <a
-                  href="#"
-                  className="text-gray-700 hover:text-fpt-red font-medium flex items-center"
-                >
+              <div className="group relative" onMouseEnter={() => setShowSupportDropdown(true)} onMouseLeave={() => setShowSupportDropdown(false)}>
+                <a href="#" className="text-gray-700 hover:text-fpt-red font-medium flex items-center">
                   Hỗ trợ
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                   </svg>
                 </a>
 
-                {/* Support Dropdown content */}
                 {showSupportDropdown && (
-                  <div
-                    className="absolute left-0 mt-2 w-[800px] bg-white shadow-lg rounded-md z-50 p-6 grid grid-cols-4 gap-6"
-                  >
-                    {/* ... (Support dropdown content - unchanged) */}
+                  <div className="absolute left-0 mt-2 w-[800px] bg-white shadow-lg rounded-md z-50 p-6 grid grid-cols-4 gap-6">
                     <div>
                       <div className="flex items-center mb-4">
                         <div className="mr-2">
@@ -251,20 +224,16 @@ const Header = () => {
                   </div>
                 )}
               </div>
-              <div className="group relative"  onMouseEnter={() => setShowKhacDropdown(true)} onMouseLeave={() => setShowKhacDropdown(false)}>
-                <a
-                  href="#"
-                  className="text-gray-700 hover:text-fpt-red font-medium flex items-center"
-                >
+
+              <div className="group relative" onMouseEnter={() => setShowOthersDropdown(true)} onMouseLeave={() => setShowOthersDropdown(false)}>
+                <a href="#" className="text-gray-700 hover:text-fpt-red font-medium flex items-center">
                   Khác
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                   </svg>
                 </a>
-                {showKhacDropdown && (
-                  <div
-                    className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 p-2"
-                  >
+                {showOthers && (
+                  <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 p-2">
                     <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Về chúng tôi</a>
                     <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Tuyển dụng</a>
                     <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Liên hệ</a>
@@ -274,7 +243,7 @@ const Header = () => {
             </nav>
           </div>
 
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:hidden lg:flex items-center">
             <div className="relative">
               <input
                 type="text"
@@ -289,7 +258,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-40">
+        <div className="md:flex lg:hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-40">
           <div className="fixed inset-y-0 right-0 max-w-xs w-full bg-white shadow-xl z-50 overflow-y-auto">
             <div className="p-4 border-b flex justify-between items-center">
               <img src="/fpt-logo.svg" alt="FPT Logo" className="h-8" />
@@ -313,7 +282,175 @@ const Header = () => {
             </div>
 
             <nav className="p-4">
-              {/* ... (Mobile menu items - unchanged) */}
+              {/* Mobile Menu Items */}
+              <div className="space-y-4">
+                {/* Sản phẩm dịch vụ */}
+                <div>
+                  <button
+                    onClick={() => toggleMobileSubmenu('products')}
+                    className="flex items-center justify-between w-full text-left text-gray-700 hover:text-fpt-red font-medium py-2"
+                  >
+                    <span>Sản phẩm dịch vụ</span>
+                    <svg
+                      className={`w-4 h-4 transform transition-transform ${
+                        mobileSubmenuOpen === 'products' ? 'rotate-180' : ''
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {mobileSubmenuOpen === 'products' && (
+                    <div className="pl-4 space-y-4 mt-2">
+                      <div>
+                        <h3 className="font-medium text-gray-800 mb-2">Internet Cáp Quang</h3>
+                        <ul className="space-y-2 pl-4">
+                          <li><a href="#" className="text-gray-600">Internet cá nhân</a></li>
+                          <li><a href="#" className="text-gray-600">Internet gia đình</a></li>
+                          <li><a href="#" className="text-gray-600">Internet game thủ</a></li>
+                          <li><a href="#" className="text-gray-600">Internet doanh nghiệp</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h3 className="font-medium text-gray-800 mb-2">Truyền hình & Giải trí</h3>
+                        <ul className="space-y-2 pl-4">
+                          <li><a href="#" className="text-gray-600">FPT Play</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h3 className="font-medium text-gray-800 mb-2">Giám Sát Thông Minh</h3>
+                        <ul className="space-y-2 pl-4">
+                          <li><a href="#" className="text-gray-600">FPT Camera</a></li>
+                          <li><a href="#" className="text-gray-600">FPT Smart Home</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Tin tức & Khuyến mãi */}
+                <div>
+                  <button
+                    onClick={() => toggleMobileSubmenu('news')}
+                    className="flex items-center justify-between w-full text-left text-gray-700 hover:text-fpt-red font-medium py-2"
+                  >
+                    <span>Tin tức & Khuyến mãi</span>
+                    <svg
+                      className={`w-4 h-4 transform transition-transform ${
+                        mobileSubmenuOpen === 'news' ? 'rotate-180' : ''
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {mobileSubmenuOpen === 'news' && (
+                    <div className="pl-4 space-y-2 mt-2">
+                      <a href="#" className="block text-gray-600">Tin tức</a>
+                      <a href="#" className="block text-gray-600">Khuyến mãi</a>
+                    </div>
+                  )}
+                </div>
+
+                {/* Ưu đãi */}
+                <div>
+                  <button
+                    onClick={() => toggleMobileSubmenu('deals')}
+                    className="flex items-center justify-between w-full text-left text-gray-700 hover:text-fpt-red font-medium py-2"
+                  >
+                    <span>Ưu đãi</span>
+                    <svg
+                      className={`w-4 h-4 transform transition-transform ${
+                        mobileSubmenuOpen === 'deals' ? 'rotate-180' : ''
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {mobileSubmenuOpen === 'deals' && (
+                    <div className="pl-4 space-y-2 mt-2">
+                      <a href="#" className="block text-gray-600">Ưu đãi mới</a>
+                      <a href="#" className="block text-gray-600">Combo tiết kiệm</a>
+                      <a href="#" className="block text-gray-600">Khách hàng thân thiết</a>
+                    </div>
+                  )}
+                </div>
+
+                {/* Hỗ trợ */}
+                <div>
+                  <button
+                    onClick={() => toggleMobileSubmenu('support')}
+                    className="flex items-center justify-between w-full text-left text-gray-700 hover:text-fpt-red font-medium py-2"
+                  >
+                    <span>Hỗ trợ</span>
+                    <svg
+                      className={`w-4 h-4 transform transition-transform ${
+                        mobileSubmenuOpen === 'support' ? 'rotate-180' : ''
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {mobileSubmenuOpen === 'support' && (
+                    <div className="pl-4 space-y-4 mt-2">
+                      <div>
+                        <h3 className="font-medium text-gray-800 mb-2">Hỗ trợ thông tin</h3>
+                        <ul className="space-y-2 pl-4">
+                          <li><a href="#" className="text-gray-600">Câu hỏi thường gặp</a></li>
+                          <li><a href="#" className="text-gray-600">Hướng dẫn sử dụng</a></li>
+                          <li><a href="#" className="text-gray-600">Hướng dẫn thủ tục</a></li>
+                          <li><a href="#" className="text-gray-600">Quản lý chất lượng dịch vụ</a></li>
+                          <li><a href="#" className="text-gray-600">Điều khoản bảo mật</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h3 className="font-medium text-gray-800 mb-2">Hỗ trợ kỹ thuật</h3>
+                        <ul className="space-y-2 pl-4">
+                          <li><a href="#" className="text-gray-600">Hướng dẫn cài đặt</a></li>
+                          <li><a href="#" className="text-gray-600">Xử lý sự cố</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Khác */}
+                <div>
+                  <button
+                    onClick={() => toggleMobileSubmenu('other')}
+                    className="flex items-center justify-between w-full text -left text-gray-700 hover:text-fpt-red font-medium py-2"
+                  >
+                    <span>Khác</span>
+                    <svg
+                      className={`w-4 h-4 transform transition-transform ${
+                        mobileSubmenuOpen === 'other' ? 'rotate-180' : ''
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {mobileSubmenuOpen === 'other' && (
+                    <div className="pl-4 space-y-2 mt-2">
+                      <a href="#" className="block text-gray-600">Về chúng tôi</a>
+                      <a href="#" className="block text-gray-600">Tuyển dụng</a>
+                      <a href="#" className="block text-gray-600">Liên hệ</a>
+                    </div>
+                  )}
+                </div>
+              </div>
             </nav>
 
             <div className="p-4 border-t">

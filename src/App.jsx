@@ -8,6 +8,7 @@ import PromotionBanners from './components/PromotionBanners';
 import NewsSection from './components/NewsSection';
 import Footer from './components/Footer';
 import FloatingChat from './components/FloatingChat';
+import BackToTopButton from './components/BackToTopButton';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <NewsSection />
       </div>
       <Footer />
+      <BackToTopButton />
       <FloatingChat />
     </div>
   );

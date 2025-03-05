@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         'fpt-red': '#e30613',
-        'fpt-blue': '#1e2f97',
+        'fpt-blue': '#191e67',
         'fpt-orange': '#ff7800',
         'fpt-light-blue': '#f0f5ff',
         'fpt-gray': '#f5f5f5',
