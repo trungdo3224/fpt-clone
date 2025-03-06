@@ -1,8 +1,5 @@
 import React from 'react';
 import Header from './components/Header';
-import Banner from './components/Banner';
-import QuickLinks from './components/QuickLinks';
-
 import Footer from './components/Footer';
 import FloatingChat from './components/FloatingChat';
 import BackToTopButton from './components/BackToTopButton';
@@ -14,11 +11,12 @@ function App() {
   return (
     <div className='min-h-screen bg-white'>
       <Header />
-      <Banner />
-      <QuickLinks />
       <Routes>
         <Route path='/' exact element={<Home />} />
-        <Route path='/internet-ca-nhan' element={<InternetPackages />} />
+        <Route path='/personal' element={<InternetPackages />} />
+        <Route path='/family' element={<InternetPackages />} />
+        <Route path='/gaming' element={<InternetPackages />} />
+        <Route path='/business' element={<InternetPackages />} />
       </Routes>
       <Footer />
       <BackToTopButton />

@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { FaCheck } from 'react-icons/fa';
+import RegisterModal from './RegisterModal';
 
 const PackageSection = () => {
   const [startIndex, setStartIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState(null);
+  const handleRegisterClick = (pkg) => {
+    setSelectedPackage(pkg);
+    setIsModalOpen(true);
+  };
   const packages = [
     {
       id: 1,
-      type: 'COMBO CAMERA',
       name: 'Combo Camera',
       speed: '150',
       price: '192,000đ',
@@ -20,7 +26,6 @@ const PackageSection = () => {
     },
     {
       id: 2,
-      type: 'INTERNET GIGA',
       name: 'Internet GIGA',
       speed: '150',
       price: '165,000đ',
@@ -33,7 +38,6 @@ const PackageSection = () => {
     },
     {
       id: 3,
-      type: 'INTERNET SKY',
       name: 'Internet SKY',
       speed: '1',
       price: '195,000đ',
@@ -46,7 +50,6 @@ const PackageSection = () => {
     },
     {
       id: 4,
-      type: 'GÓI F-GAME',
       name: 'Gói F-Game',
       speed: '1',
       price: '200,000đ',
@@ -59,7 +62,6 @@ const PackageSection = () => {
     },
     {
       id: 5,
-      type: 'INTERNET META',
       name: 'Internet META',
       speed: '1',
       price: '315,000đ',
@@ -103,119 +105,128 @@ const PackageSection = () => {
   const translatePercentage = startIndex * (100 / visibleCards);
 
   return (
-    <div className='my-8'>
-      <h2 className='text-4xl md:text-5xl font-bold text-center text-gray-800 mb-2'>
-        Gói đề xuất
-      </h2>
-      <p className='text-center text-xl text-gray-600 mb-8'>
-        Bao gồm gói giá Khuyến mãi - Đáp ứng mọi nhu cầu cuộc sống cá nhân, gia
-        đình
-      </p>
+    <>
+      <div className='my-8'>
+        <h2 className='text-4xl md:text-3xl font-bold text-center text-gray-800 mb-2'>
+          Gói đề xuất
+        </h2>
+        <p className='text-center text-xl text-gray-600 mb-8'>
+          Bao gồm gói giá Khuyến mãi - Đáp ứng mọi nhu cầu cuộc sống cá nhân,
+          gia đình
+        </p>
 
-      <div className='relative'>
-        {/* Carousel container with overflow-hidden */}
-        <div className='overflow-hidden'>
-          {/* Slide container with custom slide effect */}
-          <div
-            className='flex transition-transform duration-700 ease-in-out'
-            style={{ transform: `translateX(-${translatePercentage}%)` }}
-          >
-            {packages.map((pkg) => (
-              <div
-                key={pkg.id}
-                className='package-card bg-white rounded-lg shadow-md overflow-hidden p-4'
-                style={{ flex: `0 0 ${100 / visibleCards}%` }}
-              >
+        <div className='relative '>
+          {/* Carousel container with overflow-hidden */}
+          <div className='overflow-hidden py-8'>
+            {/* Slide container with custom slide effect */}
+            <div
+              className='flex gap-4 transition-transform duration-700 ease-in-out'
+              style={{ transform: `translateX(-${translatePercentage}%)` }}
+            >
+              {packages.map((pkg) => (
                 <div
-                  className={`bg-opacity-20 p-6 flex flex-col items-center w-full h-72  bg-center bg-cover bg-no-repeat`}
-                  style={{
-                    backgroundImage: `url(${pkg.backgroundImage})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
+                  key={pkg.id}
+                  className='package-card bg-gray-50 rounded-lg shadow-md overflow-hidden'
+                  style={{ flex: `0 0 calc(${100 / visibleCards}% - 0.8rem)` }}
                 >
-                  <img />
-                </div>
-                <div className='py-4 w-full flex flex-col items-center'>
-                  <h3 className='text-xl font-bold text-gray-800'>
-                    {pkg.name}
-                  </h3>
-                  <div className='flex items-baseline mt-2'>
-                    <span className='text-2xl font-bold text-gray-800'>
-                      {pkg.price}
+                  <div className='items-center w-full h-72 md:mb-2 sm:mb-52'>
+                    <img
+                      src={`${pkg.backgroundImage}`}
+                      className='object-cover'
+                    />
+                  </div>
+                  <div className='py-4 w-full flex flex-col items-center'>
+                    <h3 className='text-xl font-bold text-gray-800'>
+                      {pkg.name}
+                    </h3>
+                    <span className='text-sm font-bold text-gray-500 mt-4'>
+                      Chỉ từ
                     </span>
-                    <span className='text-gray-600 ml-1'>/tháng</span>
+                    <div className='flex items-baseline mt-2'>
+                      <span className='text-2xl font-bold text-gray-800'>
+                        {pkg.price}
+                      </span>
+                      <span className='text-gray-600 ml-1'>/tháng</span>
+                    </div>
+                  </div>
+                  <div className='p-6 flex flex-col h-64'>
+                    <ul className='space-y-3 flex-grow overflow-hidden whitespace-normal break-words line-clamp-3'>
+                      {pkg.features.map((feature, index) => (
+                        <li key={index} className='flex items-start'>
+                          <FaCheck className='text-green-500 mt-1 mr-2 flex-shrink-0' />
+                          <p className='text-sm text-gray-600'>{feature}</p>
+                        </li>
+                      ))}
+                    </ul>
+                    <button
+                      onClick={() => handleRegisterClick(pkg)}
+                      className='w-full mt-6 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition'
+                    >
+                      Đăng ký ngay
+                    </button>
                   </div>
                 </div>
-                <div className='p-6 flex flex-col h-64'>
-                  <ul className='space-y-3 flex-grow overflow-hidden whitespace-normal break-words line-clamp-3'>
-                    {pkg.features.map((feature, index) => (
-                      <li key={index} className='flex items-start'>
-                        <FaCheck className='text-green-500 mt-1 mr-2 flex-shrink-0' />
-                        <p className='text-sm text-gray-600'>{feature}</p>
-                      </li>
-                    ))}
-                  </ul>
-                  <button className='w-full mt-6 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition'>
-                    Đăng ký ngay
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Navigation arrows */}
-        <button
-          className={`absolute -left-12 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10 ${
-            startIndex === 0
-              ? 'opacity-50 cursor-not-allowed'
-              : 'hover:bg-gray-100'
-          }`}
-          onClick={handlePrevious}
-          disabled={startIndex === 0}
-        >
-          <svg
-            className='w-6 h-6 text-gray-600'
-            fill='none'
-            stroke='currentColor'
-            viewBox='0 0 24 24'
-            xmlns='http://www.w3.org/2000/svg'
+          {/* Navigation arrows */}
+          <button
+            className={`absolute -left-5 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10 ${
+              startIndex === 0
+                ? 'opacity-50 cursor-not-allowed'
+                : 'hover:bg-gray-100'
+            }`}
+            onClick={handlePrevious}
+            disabled={startIndex === 0}
           >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth='2'
-              d='M15 19l-7-7 7-7'
-            ></path>
-          </svg>
-        </button>
-        <button
-          className={`absolute -right-12 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10 ${
-            startIndex >= packages.length - visibleCards
-              ? 'opacity-50 cursor-not-allowed'
-              : 'hover:bg-gray-100'
-          }`}
-          onClick={handleNext}
-          disabled={startIndex >= packages.length - visibleCards}
-        >
-          <svg
-            className='w-6 h-6 text-gray-600'
-            fill='none'
-            stroke='currentColor'
-            viewBox='0 0 24 24'
-            xmlns='http://www.w3.org/2000/svg'
+            <svg
+              className='w-6 h-6 text-gray-600'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
+                d='M15 19l-7-7 7-7'
+              ></path>
+            </svg>
+          </button>
+          <button
+            className={`absolute -right-5 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10 ${
+              startIndex >= packages.length - visibleCards
+                ? 'opacity-50 cursor-not-allowed'
+                : 'hover:bg-gray-100'
+            }`}
+            onClick={handleNext}
+            disabled={startIndex >= packages.length - visibleCards}
           >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth='2'
-              d='M9 5l7 7-7 7'
-            ></path>
-          </svg>
-        </button>
+            <svg
+              className='w-6 h-6 text-gray-600'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
+                d='M9 5l7 7-7 7'
+              ></path>
+            </svg>
+          </button>
+        </div>
       </div>
-    </div>
+      <RegisterModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        selectedPackage={selectedPackage}
+      />
+    </>
   );
 };
 

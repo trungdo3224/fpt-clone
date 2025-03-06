@@ -23,19 +23,22 @@ const Header = () => {
         {
           id: 1,
           title: 'Internet cá nhân',
-          href: '/internet-ca-nhan',
+          href: '/personal',
         },
         {
           id: 2,
           title: 'Internet gia đình',
+          href: '/family',
         },
         {
           id: 3,
           title: 'Internet game thủ',
+          href: '/gaming',
         },
         {
           id: 4,
           title: 'Internet doanh nghiệp',
+          href: '/business',
         },
       ],
     },
@@ -223,9 +226,9 @@ const Header = () => {
       <div className='bg-fpt-blue text-white py-3 px-4'>
         <div className='container mx-auto flex justify-between items-center text-xs'>
           <div className='hidden sm:flex flex-row gap-2'>
-            <a href='/internet-ca-nhan' className='hover:text-fpt-orange'>
+            <a href='/personal' className='hover:text-fpt-orange'>
               <span>Khách hàng cá nhân</span>
-            </a>{' '}
+            </a>
             |
             <a href='#' className='hover:text-fpt-orange'>
               <span>Khách hàng doanh nghiệp</span>

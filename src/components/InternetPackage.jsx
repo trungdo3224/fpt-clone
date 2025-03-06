@@ -1,161 +1,423 @@
 import { FaCheck } from 'react-icons/fa';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { replace, useLocation, useNavigate } from 'react-router-dom';
 import RegisterModal from './RegisterModal';
 import { FaWifi, FaHome, FaGamepad, FaBuilding } from 'react-icons/fa';
 
 const InternetPackage = () => {
-  const [activeTab, setActiveTab] = useState('personal');
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { pathname } = location;
+  const initSections = [
+    {
+      personal: [
+        {
+          id: 1,
+          title: 'Internet cáp quang tốc độ cao',
+          subTitle: 'Trải nghiệm Internet siêu tốc cho mọi nhu cầu',
+          packages: [
+            {
+              id: 1,
+              name: 'Internet GIGA',
+              speed: '150 Mbps',
+              price: '165,000đ',
+              image: '/images/goiinternetgigan.webp',
+              features: [
+                'Trang bị Modem wifi 6',
+                'Tốc độ Download/Upload 150Mbps',
+                'Phù hợp cá nhân, hộ gia đình có từ 3 thiết bị kết nối trở lên',
+              ],
+              popular: true,
+            },
+            {
+              id: 2,
+              name: 'Internet SKY',
+              speed: '250 Mbps',
+              price: '195,000đ',
+              image: '/images/internetsky.webp',
+              features: [
+                'Trang bị Modem wifi 6',
+                'Tốc độ Download/Upload 1Gbps',
+                'Phù hợp cá nhân, hộ gia đình có từ 8 thiết bị kết nối trở lên',
+              ],
+            },
+            {
+              id: 3,
+              name: 'Internet GIGA F1',
+              speed: '250 Mbps',
+              price: '185,000đ',
+              image: '/images/internetgigaf1.webp',
+              features: [
+                'Trang bị Modem wifi 6',
+                'Tặng 1 thiết bị Acces Point giá trị lên đến 1.000.000đ',
+                'Tốc độ Download/Upload 150Mbps',
+                'Phù hợp cá nhân, hộ gia đình',
+              ],
+            },
+            {
+              id: 4,
+              name: 'Internet SKY F1',
+              speed: '250 Mbps',
+              price: '225,000đ',
+              image: '/images/internetskyf1.webp',
+              features: [
+                'Trang bị Modem wifi 6',
+                'Tặng 1 thiết bị Acces Point giá trị lên đến 1.000.000đ',
+                'Tốc độ Download/Upload 1Gbps',
+                'Phù hợp cá nhân, hộ gia đình có từ 8 thiết bị kết nối trở lên',
+              ],
+            },
+            {
+              id: 5,
+              name: 'Internet META F1',
+              speed: '250 Mbps',
+              price: '315,000đ',
+              image: '/images/internetmetaf1.webp',
+              features: [
+                'Trang bị Modem wifi 6',
+                'Tặng 1 thiết bị Acces Point giá trị lên đến 1.000.000đ',
+                'Tốc độ Download/Upload 1Gbps',
+                'Phù hợp hộ gia đình lớn và game thủ',
+              ],
+            },
+          ],
+        },
+        {
+          id: 2,
+          title: 'Combo Internet siêu tiết kiệm',
+          subTitle:
+            'Tận hưởng internet tốc độ cao tại nhà, giữ cho toàn bộ ngôi nhà được phủ sóng Internet & Wi-Fi',
+          packages: [
+            {
+              id: 1,
+              name: 'Combo Truyền Hình',
+              price: '215,000đ',
+              image: '/images/goiinternetcombotruyenhinh.webp',
+              features: [
+                'Trang bị Modem wifi 6',
+                'Phù hợp cá nhân, hộ gia đình',
+                'Xem gần 170 kênh truyền hình và quốc tế',
+                'Tiết kiệm 950.000đ so với mua lẻ',
+              ],
+              popular: true,
+            },
+            {
+              id: 2,
+              name: 'Combo SKY',
+              price: '235,000đ',
+              image: '/images/combosky.jpg',
+              features: [
+                'Trang bị Modem wifi 6 & FPT Play Box',
+                'Xem gần 130 kênh truyền hình trong nước & quốc tế',
+                'Phù hợp hộ gia đình',
+              ],
+            },
+            {
+              id: 3,
+              name: 'Combo Camera',
+              price: '192,000đ',
+              image: '/images/combointernetcameran.jpg',
+              features: [
+                'Trang bị Modem wifi 6',
+                'Trang bị Camera IQ3S kèm gói lưu trữ Cloud 3 ngày',
+                'Tặng 1 thiết bị Access Point',
+                'Tiếp kiệm 950.000đ so với mua lẻ',
+              ],
+            },
+            {
+              id: 4,
+              name: 'Combo Giga F1',
+              price: '245,600đ',
+              image: '/images/goicombogigaf1.webp',
+              features: [
+                'Trang bị Modem wifi 6 & FPT Play Box',
+                'Xem gần 170 kênh truyền hình trong nước & quốc tế',
+                'Tặng 1 thiết bị Access Point',
+                'Tiếp kiệm 1.540.000đ so với mua lẻ',
+              ],
+            },
+            {
+              id: 5,
+              name: 'Combo Sky F1',
+              price: '265,600đ',
+              image: '/images/goicomboskyf1.webp',
+              features: [
+                'Trang bị Modem wifi 6',
+                'Tặng 1 thiết bị Acces Point giá trị lên đến 1.000.000đ',
+                'Tốc độ Download/Upload 1Gbps',
+                'Phù hợp hộ gia đình lớn và game thủ',
+              ],
+            },
+          ],
+        },
+        {
+          id: 3,
+          title: 'Internet FPT - Kết nối vượt trội cho Doanh nghiệp',
+          subTitle:
+            'Giải pháp Internet tốc độ cao từ FPT Telecom giúp duy trì kết nối liền mạch, phủ sóng Wi-Fi cho toàn bộ doanh nghiệp',
+          packages: [
+            {
+              id: 1,
+              name: 'Super250',
+              price: '545,000đ',
+              image: '/images/goidnsuper250.webp',
+              features: [
+                'Trang bị Modem Wi-Fi 6 Trang bị Modem Mikrotik RB760iGS/ EdgeRouter X SFP',
+                'Phù hợp cá nhân, doanh nghiệp nhỏ (<50 thiết bị)',
+              ],
+              popular: true,
+            },
+            {
+              id: 2,
+              name: 'Lux500',
+              price: '800,000đ',
+              image: '/images/goidnlux500.webp',
+              features: [
+                'Trang bị Modem Wi-Fi 6 & 1 thiết bị Access Point',
+                'Tích hợp Ultra Fast tối ưu tốc độ',
+                'Phù hợp cá nhân, doanh nghiệp (<125 thiết bị)',
+              ],
+            },
+            {
+              id: 3,
+              name: 'Lux800',
+              price: '1,000,000đ',
+              image: '/images/goidnlux800.webp',
+              features: [
+                'Trang bị Modem Wi-Fi 6 & 1 thiết bị Access Point',
+                'Tích hợp Ultra Fast tối ưu tốc độ',
+                'Phù hợp cá nhân, doanh nghiệp (<160 thiết bị)',
+              ],
+            },
+            {
+              id: 4,
+              name: 'Combo Lux500',
+              price: '875,600đ',
+              image: '/images/combolux500.jpg',
+              features: [
+                'Trang bị Modem Wi-Fi 6 & 1 thiết bị Access Point',
+                'Tích hợp Ultra Fast tối ưu tốc độ',
+                'Xem gần 130 kênh truyền hình trong nước & quốc tế',
+                'Phù hợp cá nhân, doanh nghiệp (<125 thiết bị)',
+                'Tiết kiệm tới 1.200.000đ so với mua lẻ',
+              ],
+            },
+            {
+              id: 5,
+              name: 'Combo Lux800',
+              price: '1,075,600đ',
+              image: '/images/combolux800.jpg',
+              features: [
+                'Trang bị Modem Wi-Fi 6 & 1 thiết bị Access Point',
+                'Tích hợp Ultra Fast tối ưu tốc độ',
+                'Xem gần 130 kênh truyền hình trong nước & quốc tế',
+                'Phù hợp cá nhân, doanh nghiệp (<165 thiết bị)',
+                'Tiết kiệm tới 1.200.000đ so với mua lẻ',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      family: [
+        {
+          id: 1,
+          title: 'Kết nối Internet cho mọi phòng, mọi tầng, mọi nhà',
+          subTitle:
+            'Tận hưởng internet tốc độ cao tại nhà, giữ cho toàn bộ ngôi nhà được phủ sóng Internet & Wi-Fi',
+          packages: [
+            {
+              id: 1,
+              name: 'Internet SKY',
+              speed: '1Gbps',
+              price: '195,000đ',
+              image: '/images/internetsky.webp',
+              features: [
+                'Trang bị Modem wifi 6',
+                'Tốc độ Download/Upload 1Gbps',
+                'Phù hợp cá nhân, hộ gia đình có từ 8 thiết bị kết nối trở lên',
+              ],
+            },
+            {
+              id: 2,
+              name: 'Combo SKY Max',
+              speed: '250 Mbps',
+              price: '235,000đ',
+              image: '/images/goiinternetcombosky.webp',
+              features: [
+                'Trang bị Modem wifi 6 & FPT Play Box',
+                'Xen gần 170 kênh truyền hình trong nước và quốc tế',
+                'Phù hợp hộ gia đình',
+                'Tiếp kiệm tới 590.000đ so với mua lẻ',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      gaming: [
+        {
+          id: 1,
+          title: '',
+          subTitle: '',
+          packages: [
+            {
+              id: 1,
+              name: 'F-GAME GIGA',
+              speed: '400 Mbps',
+              price: '200,000đ',
+              image: '/images/goifgamen.webp',
+              features: [
+                'Tích hợp gói Ultra Fast hỗ trợ tốc độ cao',
+                'Trang bị Modem wifi 6',
+                'IP tĩnh cho game thủ',
+                'Độ trễ thấp cho gaming',
+              ],
+              popular: true,
+            },
+            {
+              id: 2,
+              name: 'F-GAME SKY',
+              speed: '500 Mbps',
+              price: '250,000đ',
+              image: '/images/goifgamen.webp',
+              features: [
+                'Tốc độ Download/Upload 500Mbps',
+                'Độ trễ thấp cho gaming',
+                'IP tĩnh và Modem wifi 6',
+                'Hỗ trợ kỹ thuật 24/7',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      business: [
+        {
+          id: 1,
+          title: '',
+          subTitle: '',
+          packages: [
+            {
+              id: 7,
+              name: 'Super250',
+              speed: '250 Mbps',
+              price: '545,000đ',
+              image: '/images/goiinternetmetan.webp',
+              features: [
+                'Tốc độ Download/Upload 250Mbps',
+                'IP tĩnh cho doanh nghiệp',
+                'Hỗ trợ kỹ thuật 24/7',
+                'Băng thông cam kết CIR',
+              ],
+              popular: true,
+            },
+            {
+              id: 8,
+              name: 'Lux500',
+              speed: '500 Mbps',
+              price: '800,000đ',
+              image: '/images/goiinternetmetan.webp',
+              features: [
+                'Tốc độ Download/Upload 500Mbps',
+                'Multiple IP tĩnh',
+                'Hỗ trợ kỹ thuật ưu tiên',
+                'Băng thông cam kết CIR',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ];
+  const [startIndex, setStartIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState({
+    id: pathname.split('/')[1],
+    banner: 'images/internetcanhann.webp',
+  });
+  const [sections, setSections] = useState(initSections);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
 
+  // Determine how many cards are visible based on screen width
+  const getVisibleCards = () => {
+    if (window.innerWidth >= 1024) return 4; // large screens
+    if (window.innerWidth >= 768) return 2; // medium screens
+    return 1; // small screens
+  };
+
+  const [visibleCards, setVisibleCards] = useState(getVisibleCards());
+  useEffect(() => {
+    const handleResize = () => {
+      setVisibleCards(getVisibleCards());
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    setSections(initSections);
+  }, []);
   const tabs = [
-    { id: 'personal', label: 'Internet cá nhân', icon: FaWifi },
-    { id: 'family', label: 'Internet gia đình', icon: FaHome },
-    { id: 'gaming', label: 'Internet game thủ', icon: FaGamepad },
-    { id: 'business', label: 'Internet doanh nghiệp', icon: FaBuilding },
+    {
+      id: 'personal',
+      label: 'Internet cá nhân',
+      icon: FaWifi,
+      banner: 'images/internetcanhann.webp',
+    },
+    {
+      id: 'family',
+      label: 'Internet gia đình',
+      icon: FaHome,
+      banner: 'images/bannerinternetgiadinhn.png',
+    },
+    {
+      id: 'gaming',
+      label: 'Internet game thủ',
+      icon: FaGamepad,
+      banner: 'images/bannerinternetgame.png',
+    },
+    {
+      id: 'business',
+      label: 'Internet doanh nghiệp',
+      icon: FaBuilding,
+      banner: 'images/internetdoanhnghiepn.webp',
+    },
   ];
 
-  const packages = {
-    personal: [
-      {
-        id: 1,
-        name: 'Internet GIGA',
-        speed: '150 Mbps',
-        price: '165,000đ',
-        image: '/images/goiinternetgigan.webp',
-        features: [
-          'Tốc độ Download/Upload 150Mbps',
-          'Tốc độ nội địa, tốc độ quốc tế ổn định 24/7',
-          'Miễn phí lắp đặt',
-          'Trang bị Modem wifi 6',
-        ],
-        popular: true,
-      },
-      {
-        id: 2,
-        name: 'Internet SKY',
-        speed: '250 Mbps',
-        price: '195,000đ',
-        image: '/images/internetsky.webp',
-        features: [
-          'Tốc độ Download/Upload 250Mbps',
-          'Tốc độ nội địa, tốc độ quốc tế ổn định 24/7',
-          'Miễn phí lắp đặt',
-          'Trang bị Modem wifi 6',
-        ],
-      },
-      {
-        id: 3,
-        name: 'Internet SKY',
-        speed: '250 Mbps',
-        price: '195,000đ',
-        image: '/images/internetsky.webp',
-        features: [
-          'Tốc độ Download/Upload 250Mbps',
-          'Tốc độ nội địa, tốc độ quốc tế ổn định 24/7',
-          'Miễn phí lắp đặt',
-          'Trang bị Modem wifi 6',
-        ],
-      },
-    ],
-    family: [
-      {
-        id: 3,
-        name: 'Internet GIGA F1',
-        speed: '150 Mbps',
-        price: '185,000đ',
-        image: '/images/goiinternetgigan.webp',
-        features: [
-          'Tốc độ Download/Upload 150Mbps',
-          'Phù hợp cho gia đình 3-4 người',
-          'Miễn phí lắp đặt và thiết bị',
-          'Trang bị Modem wifi 6',
-        ],
-        popular: true,
-      },
-      {
-        id: 4,
-        name: 'Internet SKY F1',
-        speed: '250 Mbps',
-        price: '225,000đ',
-        image: '/images/internetsky.webp',
-        features: [
-          'Tốc độ Download/Upload 250Mbps',
-          'Phù hợp cho gia đình 4-6 người',
-          'Miễn phí lắp đặt và thiết bị',
-          'Trang bị Modem wifi 6',
-        ],
-      },
-    ],
-    gaming: [
-      {
-        id: 5,
-        name: 'F-GAME GIGA',
-        speed: '400 Mbps',
-        price: '200,000đ',
-        image: '/images/goifgamen.webp',
-        features: [
-          'Tích hợp gói Ultra Fast hỗ trợ tốc độ cao',
-          'Trang bị Modem wifi 6',
-          'IP tĩnh cho game thủ',
-          'Độ trễ thấp cho gaming',
-        ],
-        popular: true,
-      },
-      {
-        id: 6,
-        name: 'F-GAME SKY',
-        speed: '500 Mbps',
-        price: '250,000đ',
-        image: '/images/goifgamen.webp',
-        features: [
-          'Tốc độ Download/Upload 500Mbps',
-          'Độ trễ thấp cho gaming',
-          'IP tĩnh và Modem wifi 6',
-          'Hỗ trợ kỹ thuật 24/7',
-        ],
-      },
-    ],
-    business: [
-      {
-        id: 7,
-        name: 'Super250',
-        speed: '250 Mbps',
-        price: '545,000đ',
-        image: '/images/goiinternetmetan.webp',
-        features: [
-          'Tốc độ Download/Upload 250Mbps',
-          'IP tĩnh cho doanh nghiệp',
-          'Hỗ trợ kỹ thuật 24/7',
-          'Băng thông cam kết CIR',
-        ],
-        popular: true,
-      },
-      {
-        id: 8,
-        name: 'Lux500',
-        speed: '500 Mbps',
-        price: '800,000đ',
-        image: '/images/goiinternetmetan.webp',
-        features: [
-          'Tốc độ Download/Upload 500Mbps',
-          'Multiple IP tĩnh',
-          'Hỗ trợ kỹ thuật ưu tiên',
-          'Băng thông cam kết CIR',
-        ],
-      },
-    ],
+  // Navigation functions
+  const handlePrevious = () => {
+    setStartIndex((prev) => Math.max(0, prev - 1));
+  };
+
+  const handleNext = (index) => {
+    setStartIndex((prev) =>
+      Math.min(
+        sections[0][activeTab.id][index].packages.length - visibleCards,
+        prev + 1
+      )
+    );
   };
 
   const handleRegisterClick = (pkg) => {
     setSelectedPackage(pkg);
     setIsModalOpen(true);
   };
+
+  const translatePercentage = startIndex * (100 / visibleCards);
   return (
     <>
-      <div className='bg-blue-600 py-16 h-96'></div>
+      <div
+        className='bg-no-repeat bg-cover bg-center py-16 h-[32rem]'
+        style={{
+          backgroundImage: `url(${activeTab.banner})`,
+        }}
+      ></div>
 
-      <div className='container mx-auto px-4 -mt-8'>
+      <div className='container mx-auto px-4 -mt-4'>
         {/* Tabs */}
         <div className='bg-white rounded-xl shadow-lg p-2 mb-12'>
           <div className='grid grid-cols-2 md:grid-cols-4 gap-2'>
@@ -164,9 +426,16 @@ const InternetPackage = () => {
               return (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center p-4 rounded-lg transition-all ${
-                    activeTab === tab.id
+                  onClick={() => {
+                    navigate(`/${tab.id}`, { replace: true })
+                    return setActiveTab((prev) =>
+                      prev.id === tab.id
+                        ? prev
+                        : { id: tab.id, banner: tab.banner }
+                    );
+                  }}
+                  className={`flex items-center justify-center p-4 rounded-lg transition-all ${
+                    activeTab.id === tab.id
                       ? 'bg-blue-600 text-white'
                       : 'bg-white text-gray-600 hover:bg-gray-50'
                   }`}
@@ -178,65 +447,146 @@ const InternetPackage = () => {
             })}
           </div>
         </div>
-        <div className='m-16'>
-          <div className='container mx-auto px-4'>
-            <div className='text-center text-white'>
-              <h1 className='text-4xl md:text-5xl font-bold mb-4 text-black'>
-                Internet cáp quang tốc độ cao
-              </h1>
-              <p className='text-xl md:text-2xl text-blue-100 text-blue-500'>
-                Trải nghiệm Internet siêu tốc cho mọi nhu cầu
-              </p>
-            </div>
-          </div>
-        </div>
-        {/* Package Cards */}
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-16'>
-          {packages[activeTab].map((pkg) => (
-            <div
-              key={pkg.id}
-              className='bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 relative'
-            >
-              {pkg.popular && (
-                <div className='absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium'>
-                  Phổ biến
+        {sections.length &&
+          sections.map((section) => {
+            return section[activeTab.id]?.map((item, index) => {
+              const { id, title, subTitle, packages } = item;
+              return (
+                <div key={id}>
+                  <div className='m-16'>
+                    <div className='container mx-auto px-4'>
+                      <div className='text-center text-white'>
+                        <h1 className='text-4xl md:text-4xl font-bold mb-4 text-gray-600'>
+                          {title}
+                        </h1>
+                        <p className='text-xl md:text-xl text-gray-400'>
+                          {subTitle}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='relative '>
+                    {/* Carousel container with overflow-hidden */}
+                    <div className='overflow-hidden py-8'>
+                      {/* Slide container with custom slide effect */}
+                      <div
+                        className='flex gap-4 transition-transform duration-700 ease-in-out'
+                        style={{
+                          transform: `translateX(-${translatePercentage}%)`,
+                        }}
+                      >
+                        {packages.map((pkg) => (
+                          <div
+                            key={pkg.id}
+                            className='package-card bg-gray-50 rounded-lg shadow-md overflow-hidden'
+                            style={{
+                              flex: `0 0 calc(${100 / visibleCards}% - 0.8rem)`,
+                            }}
+                          >
+                            <div className='items-center w-full h-72 md:mb-2 sm:mb-52'>
+                              <img
+                                src={`${pkg.image}`}
+                                className='object-cover'
+                              />
+                            </div>
+                            <div className='py-4 w-full flex flex-col items-center'>
+                              <h3 className='text-2xl font-bold text-gray-800'>
+                                {pkg.name}
+                              </h3>
+                              <span className='text-sm font-bold text-gray-500 mt-4'>
+                                Chỉ từ
+                              </span>
+                              <div className='flex items-baseline mt-2'>
+                                <span className='text-xl font-bold text-gray-800'>
+                                  {pkg.price}
+                                </span>
+                                <span className='text-gray-600 ml-1'>
+                                  /tháng
+                                </span>
+                              </div>
+                            </div>
+                            <div className='p-6 flex flex-col h-72'>
+                              <ul className='space-y-4 flex-grow whitespace-normal break-words line-clamp-3 h-full'>
+                                {pkg.features.map((feature, index) => (
+                                  <li key={index} className='flex items-start'>
+                                    <FaCheck className='text-green-500 mt-1 mr-2 flex-shrink-0' />
+                                    <p className='text-sm text-gray-600'>
+                                      {feature}
+                                    </p>
+                                  </li>
+                                ))}
+                              </ul>
+                              <button
+                                onClick={() => handleRegisterClick(pkg)}
+                                className='w-full mt-auto bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition'
+                              >
+                                Đăng ký ngay
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    {/* Navigation arrows */}
+                    {packages.length > visibleCards && (
+                      <>
+                        <button
+                          className={`absolute -left-5 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10 ${
+                            startIndex === 0
+                              ? 'opacity-50 cursor-not-allowed'
+                              : 'hover:bg-gray-100'
+                          }`}
+                          onClick={handlePrevious}
+                          disabled={startIndex === 0}
+                        >
+                          <svg
+                            className='w-6 h-6 text-gray-600'
+                            fill='none'
+                            stroke='currentColor'
+                            viewBox='0 0 24 24'
+                            xmlns='http://www.w3.org/2000/svg'
+                          >
+                            <path
+                              strokeLinecap='round'
+                              strokeLinejoin='round'
+                              strokeWidth='2'
+                              d='M15 19l-7-7 7-7'
+                            ></path>
+                          </svg>
+                        </button>
+                        <button
+                          className={`absolute -right-5 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10 ${
+                            startIndex >= packages.length - visibleCards
+                              ? 'opacity-50 cursor-not-allowed'
+                              : 'hover:bg-gray-100'
+                          }`}
+                          onClick={() => handleNext(index)}
+                          disabled={
+                            startIndex >= packages.length - visibleCards
+                          }
+                        >
+                          <svg
+                            className='w-6 h-6 text-gray-600'
+                            fill='none'
+                            stroke='currentColor'
+                            viewBox='0 0 24 24'
+                            xmlns='http://www.w3.org/2000/svg'
+                          >
+                            <path
+                              strokeLinecap='round'
+                              strokeLinejoin='round'
+                              strokeWidth='2'
+                              d='M9 5l7 7-7 7'
+                            ></path>
+                          </svg>
+                        </button>
+                      </>
+                    )}
+                  </div>
                 </div>
-              )}
-              <div
-                className='h-48 bg-cover bg-center relative'
-                style={{ backgroundImage: `url(${pkg.image})` }}
-              >
-                <div className='absolute inset-0 bg-gradient-to-t from-black/50 to-transparent' />
-                <div className='absolute bottom-4 left-4 text-white'>
-                  <h3 className='text-2xl font-bold'>{pkg.name}</h3>
-                  <div className='text-lg'>{pkg.speed}</div>
-                </div>
-              </div>
-              <div className='p-6'>
-                <div className='flex items-baseline mb-6'>
-                  <span className='text-3xl font-bold text-blue-600'>
-                    {pkg.price}
-                  </span>
-                  <span className='text-gray-500 ml-2'>/tháng</span>
-                </div>
-                <ul className='space-y-4 mb-8'>
-                  {pkg.features.map((feature, index) => (
-                    <li key={index} className='flex items-start'>
-                      <FaCheck className='text-green-500 mt-1 mr-3 flex-shrink-0' />
-                      <span className='text-gray-600'>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  onClick={() => handleRegisterClick(pkg)}
-                  className='w-full bg-blue-600 text-white py-4 rounded-lg font-medium hover:bg-blue-700 transition-colors'
-                >
-                  Đăng ký ngay
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+              );
+            });
+          })}
       </div>
 
       <RegisterModal
