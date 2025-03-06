@@ -193,6 +193,7 @@ const Header = () => {
     {
       id: 1,
       title: 'Đăng Ký Online',
+      href: '/register'
     },
     {
       id: 2,
@@ -230,13 +231,13 @@ const Header = () => {
               <span>Khách hàng cá nhân</span>
             </a>
             |
-            <a href='#' className='hover:text-fpt-orange'>
+            <a href='/business' className='hover:text-fpt-orange'>
               <span>Khách hàng doanh nghiệp</span>
             </a>
           </div>
           <div>
             <span className='text-xs sm:text-sm'>
-              Hotline hỗ trợ miễn phí : <strong>094.996.9962</strong>
+              Hotline hỗ trợ miễn phí : <strong>096.930.2332</strong>
             </span>
           </div>
         </div>
