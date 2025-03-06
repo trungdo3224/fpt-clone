@@ -6,6 +6,7 @@ import BackToTopButton from './components/BackToTopButton';
 import Home from './pages/Home';
 import { Route, Routes } from 'react-router-dom';
 import InternetPackages from './pages/InternetPackages';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/family' element={<InternetPackages />} />
         <Route path='/gaming' element={<InternetPackages />} />
         <Route path='/business' element={<InternetPackages />} />
+        <Route path='/register' element={<Register />} />
       </Routes>
       <Footer />
       <BackToTopButton />
