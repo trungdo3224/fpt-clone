@@ -2,7 +2,7 @@ import React from 'react';
 
 const PromotionBanners = () => {
   return (
-    <div className='xl: grid sm: grid-cols-1 md: grid-cols-2 gap-4 h-96'>
+    <div className='xl: grid sm: grid-cols-1 md: grid-cols-2 gap-4 h-96 xl:mb-56'>
       <div className='p-6 rounded-lg bg-[url(images/fpt-wifi-6-ket-noi-sieu-vuot-troi.jpg)] bg-cover bg-center bg-no-repeat'></div>
 
       <div className='grid grid-rows-2 gap-4'>

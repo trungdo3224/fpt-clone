@@ -8,7 +8,7 @@ import {
   FaHeadset,
 } from 'react-icons/fa';
 import { CgSmartHomeCooker } from 'react-icons/cg';
-import { MdOutlineHealthAndSafety, MdOutlineSettings } from 'react-icons/md';
+import { MdOutlineHealthAndSafety, MdOutlineSettings, MdOutlineSecurity } from 'react-icons/md';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 import { HiOutlineOfficeBuilding } from 'react-icons/hi';
 import CustomDropDown from './CustomDropDown';
@@ -50,6 +50,7 @@ const Header = () => {
         {
           id: 1,
           title: 'FPT Play',
+          href:'/fptplay'
         },
       ],
     },
@@ -61,25 +62,29 @@ const Header = () => {
         {
           id: 1,
           title: 'FPT Camera',
+          href:'/fptcamera'
         },
         {
           id: 2,
           title: 'FPT Smart Home',
+          href:'/fptsmarthome'
         },
       ],
     },
     {
       id: 4,
       title: 'Bảo Mật An Toàn',
-      icon: <MdOutlineHealthAndSafety />,
+      icon: <MdOutlineSecurity />,
       children: [
         {
           id: 1,
           title: 'F-Safe',
+          href: '/fsafe'
         },
         {
           id: 2,
           title: 'F-Safe Go',
+          href: '/fsafego'
         },
       ],
     },
@@ -91,6 +96,7 @@ const Header = () => {
         {
           id: 1,
           title: 'FPT Medicare',
+          href: '/fptmedicare'
         },
       ],
     },
@@ -208,9 +214,10 @@ const Header = () => {
   const [mobileSubmenuOpen, setMobileSubmenuOpen] = useState('');
   const customTitleStyle = {
     fontWeight: '500',
-    fontSize: '16px',
+    fontSize: '18px',
     padding: '5px',
     cursor: 'pointer',
+    opacity: '0.7',
   };
 
   const toggleMobileMenu = () => {

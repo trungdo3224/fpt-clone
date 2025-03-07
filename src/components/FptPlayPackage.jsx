@@ -6,7 +6,7 @@ import { FaCheck, FaWifi, FaHome, FaGamepad, FaBuilding } from 'react-icons/fa';
 // Static sections data (unchanged)
 const initSections = [
   {
-    personal: [
+    fptplay: [
       {
         id: 1,
         title: 'Internet cáp quang tốc độ cao',
@@ -216,7 +216,7 @@ const initSections = [
     ],
   },
   {
-    family: [
+    fptcamera: [
       {
         id: 1,
         title: 'Kết nối Internet cho mọi phòng, mọi tầng, mọi nhà',
@@ -268,122 +268,6 @@ const initSections = [
               'Trang bị Camera IQ3S kèm gói lưu trữ Cloud 3 ngày',
               'Tặng 1 thiết bị Access Point',
               'Tiếp kiệm 950.000đ so với mua lẻ',
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    gaming: [
-      {
-        id: 1,
-        title: 'Internet tốc độ cao cấu hình riêng cho game thủ',
-        subTitle:
-          'Mang đến trải nghiệm game mượt mà, ổn định, giảm thiểu ping trong mọi thể loại game',
-        packages: [
-          {
-            id: 1,
-            name: 'Gói F-Game',
-            price: '260,000đ',
-            image: '/images/goifgamen.webp',
-            features: [
-              'Trang bị Modem wifi 6',
-              'Tích hợp gói Ultra Fast hỗ trợ hơn 50+ tựa game',
-              'Giảm độ trễ tới 16ms',
-            ],
-            popular: true,
-          },
-          {
-            id: 2,
-            name: 'Combo F-Game',
-            price: '330,000đ',
-            image: '/images/goicombofgamen.webp',
-            features: [
-              'Trang bị Modem Wi-Fi 6 & FPT Play Box',
-              'Tích hợp gói Ultra Fast hỗ trợ hơn 50+ tựa game',
-              'Xem gần 170 kênh truyền hình trong nước & quốc tế',
-              'Tiết kiệm tới 630.000đ so với mua lẻ',
-            ],
-          },
-          {
-            id: 3,
-            name: 'Internet META',
-            price: '315,000đ',
-            image: '/images/goiinternetmetan.webp',
-            features: [
-              'Trang bị Modem Wi-Fi 6 & FPT Play Box',
-              'Tốc độ Download/Upload 1 Gbps',
-              'Phù hợp hộ gia đình lớn và game thủ',
-            ],
-          },
-          {
-            id: 4,
-            name: 'Combo META',
-            price: '335,000đ',
-            image: '/images/goiinternetcombometa.webp',
-            features: [
-              'Trang bị Modem Wi-Fi 6 & FPT Play Box',
-              'Xem gần 170 kênh truyền hình trong nước & quốc tế',
-              'Tốc độ lên đến 1 Gbps',
-              'Tiết kiệm tới 590.000đ so với mua lẻ',
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    business: [
-      {
-        id: 1,
-        title: 'Internet FPT - Kết nối vượt trội cho Doanh nghiệp',
-        subTitle:
-          'Giải pháp Internet tốc độ cao từ FPT Telecom giúp duy trì kết nối liền mạch, phủ sóng Wi-Fi cho toàn bộ doanh nghiệp',
-        packages: [
-          {
-            id: 1,
-            name: 'Super250',
-            price: '545,000đ',
-            image: '/images/goiinternetmetan.webp',
-            features: [
-              'Trang bị Modem Wi-Fi 6 Trang bị Modem Mikrotik RB760iGS/ EdgeRouter X SFP',
-              'Phù hợp cá nhân, doanh nghiệp nhỏ (<50 thiết bị)',
-            ],
-          },
-          {
-            id: 2,
-            name: 'Lux500',
-            price: '800,000đ',
-            image: '/images/goidnlux500.webp',
-            features: [
-              'Trang bị Modem Wi-Fi 6 & 1 thiết bị Access Point',
-              'Tích hợp Ultra Fast tối ưu tốc độ',
-              'Phù hợp cá nhân, doanh nghiệp (<125 thiết bị)',
-            ],
-          },
-          {
-            id: 3,
-            name: 'Lux800',
-            price: '1,000,000đ',
-            image: '/images/goidnlux800.webp',
-            features: [
-              'Trang bị Modem Wi-Fi 6 & 1 thiết bị Access Point',
-              'Tích hợp Ultra Fast tối ưu tốc độ',
-              'Phù hợp cá nhân, doanh nghiệp (<160 thiết bị)',
-            ],
-          },
-          {
-            id: 4,
-            name: 'Combo Lux500',
-            price: '875,600đ',
-            image: '/images/combolux500.jpg',
-            features: [
-              'Trang bị Modem Wi-Fi 6 & 1 thiết bị Access Point',
-              'Tích hợp Ultra Fast tối ưu tốc độ',
-              'Xem gần 130 kênh truyền hình trong nước & quốc tế',
-              'Phù hợp cá nhân, doanh nghiệp (<125 thiết bị)',
-              'Tiết kiệm tới 1.200.000đ so với mua lẻ',
             ],
           },
         ],
@@ -449,7 +333,7 @@ const Carousel = ({ packages, visibleCards, onRegisterClick }) => {
                 />
               </div>
               <div className='py-4 w-full flex flex-col items-center'>
-                <h3 className='text-2xl font-bold text-gray-800'>{pkg.name}</h3>
+                <h2 className='text-2xl font-bold text-gray-800'>{pkg.name}</h2>
                 <span className='text-sm font-bold text-gray-500 mt-4'>
                   Chỉ từ
                 </span>
@@ -537,9 +421,9 @@ const Carousel = ({ packages, visibleCards, onRegisterClick }) => {
 };
 
 //
-// Main InternetPackage Component
+// Main FptPlayPackage Component
 //
-const InternetPackage = () => {
+const FptPlayPackage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { pathname } = location;
@@ -553,28 +437,22 @@ const InternetPackage = () => {
   const tabs = useMemo(
     () => [
       {
-        id: 'personal',
-        label: 'Internet cá nhân',
+        id: 'fptplay',
+        label: 'Truyền hình FPT Play',
         icon: FaWifi,
-        banner: 'images/internetcanhann.webp',
+        banner: 'images/bannergoixmashomepage.webp',
       },
       {
-        id: 'family',
-        label: 'Internet gia đình',
+        id: 'fptcamera',
+        label: 'FPT Camera',
         icon: FaHome,
-        banner: 'images/bannerinternetgiadinhn.png',
+        banner: 'images/fptcameramua1duoc3new.jpg',
       },
       {
-        id: 'gaming',
-        label: 'Internet game thủ',
+        id: 'fptsmarthome',
+        label: 'FPT Smart Home',
         icon: FaGamepad,
-        banner: 'images/bannerinternetgame.png',
-      },
-      {
-        id: 'business',
-        label: 'Internet doanh nghiệp',
-        icon: FaBuilding,
-        banner: 'images/internetdoanhnghiepn.webp',
+        banner: 'images/bannersmarthome.png',
       },
     ],
     []
@@ -607,12 +485,12 @@ const InternetPackage = () => {
     <>
       {/* Banner Section */}
       <div
-        className='bg-no-repeat bg-cover bg-center py-16 h-[28rem]'
+        className='bg-no-repeat bg-cover bg-center py-16 h-[32rem]'
         style={{ backgroundImage: `url(${activeTab.banner})` }}
-      />
+      />{' '}
       {/* Tabs */}
       <div className='flex flex-row justify-center bg-white rounded-xl shadow-lg p-2'>
-        <div className='grid grid-cols-2 md:grid-cols-4 gap-2'>
+        <div className='grid grid-cols-2 md:grid-cols-3 gap-2'>
           {tabs.map((tab) => {
             const Icon = tab.icon;
             return (
@@ -632,10 +510,41 @@ const InternetPackage = () => {
           })}
         </div>
       </div>
-
-      <div className='container mx-auto px-4 mt-6'>
-        {/* Tabs */}
-
+      {location.pathname === '/fptsmarthome' && (
+        <>
+          <div className='flex flex-row items-stretch justify-center px-60 py-8 h-[400px] bg-white gap-x-8 mb-8'>
+            <div className='flex flex-col w-[45%] justify-start items-stretch gap-y-8'>
+              <h2 className='text-xl text-[#ff6634] font-bold'>GIỚI THIỆU</h2>
+              <div className='flex flex-col items-start justify-center gap-y-4'>
+                <h3 className='font-semibold'>FPT Smart Home</h3>
+                <p className='text-gray-600'>
+                  Chúng tôi mong muốn mang đến một không gian sống thông minh và
+                  hiện đại với chi phí hợp lý nhất cho người dân Việt Nam.
+                </p>
+              </div>
+              <div className='flex flex-col items-start justify-center gap-y-4'>
+                <h3 className='font-semibold'>Tầm nhìn</h3>
+                <p className='text-gray-600'>
+                  FPT Smart Home hướng đến trở thành đơn vị phát triển nhà thông
+                  minh hàng đầu không chỉ trong nước mà còn trên Thế giới. Chúng
+                  tôi luôn tiên phong đổi mới, ứng dụng kỹ thuật hiện đại, tích
+                  hợp công nghệ tiên tiến vào cuộc sống mỗi người dân.
+                </p>
+              </div>
+            </div>
+            <div className='w-[50%] bg-[url(images/smarthome-about.jpg)] rounded-[30px] h-full bg-cover bg-center bg-no-repeat'></div>
+          </div>
+          <div className='flex flex-col items-center justify-center px-60 py-8 h-[1000px] bg-gray-300 gap-y-8'>
+            <div className='flex flex-col w-[100%]'>
+              <h1 className='text-3xl md:text-3xl font-bold text-gray-800 text-center'>
+                Tổng quan giải pháp nhà thông minh FPT Smart Home
+              </h1>
+            </div>
+            <div className='flex flex-col w-full h-[800px] bg-[url(images/hi1200.jpg)] bg-cover bg-center bg-no-repeat rounded-xl'></div>
+          </div>
+        </>
+      )}
+      <div className='container mx-auto px-4'>
         {/* Render sections for the active tab */}
         {activeSections.map((item) => {
           const { id, title, subTitle, packages } = item;
@@ -671,4 +580,4 @@ const InternetPackage = () => {
   );
 };
 
-export default InternetPackage;
+export default FptPlayPackage;

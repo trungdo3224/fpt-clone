@@ -7,6 +7,8 @@ import Home from './pages/Home';
 import { Route, Routes } from 'react-router-dom';
 import InternetPackages from './pages/InternetPackages';
 import Register from './pages/Register';
+import FloatingPhone from './components/FloatingPhone';
+import FptPlay from './pages/FptPlay';
 
 function App() {
   return (
@@ -18,11 +20,16 @@ function App() {
         <Route path='/family' element={<InternetPackages />} />
         <Route path='/gaming' element={<InternetPackages />} />
         <Route path='/business' element={<InternetPackages />} />
+        <Route path='/fptplay' element={<FptPlay />} />
+        <Route path='/fptcamera' element={<FptPlay />} />
+        <Route path='/fptsmarthome' element={<FptPlay />} />
+
         <Route path='/register' element={<Register />} />
       </Routes>
       <Footer />
       <BackToTopButton />
       <FloatingChat />
+      <FloatingPhone />
     </div>
   );
 }

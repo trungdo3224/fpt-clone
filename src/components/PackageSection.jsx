@@ -149,7 +149,7 @@ const PackageSection = () => {
                       <span className='text-gray-600 ml-1'>/tháng</span>
                     </div>
                   </div>
-                  <div className='p-6 flex flex-col h-80'>
+                  <div className='p-6 flex flex-col h-56'>
                     <ul className='space-y-3 flex-grow overflow-hidden whitespace-normal break-words line-clamp-3'>
                       {pkg.features.map((feature, index) => (
                         <li key={index} className='flex items-start'>
@@ -160,7 +160,7 @@ const PackageSection = () => {
                     </ul>
                     <button
                       onClick={() => handleRegisterClick(pkg)}
-                      className='w-full mt-auto bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition'
+                      className='w-full mt-auto bg-blue-700 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition'
                     >
                       Đăng ký ngay
                     </button>
@@ -181,7 +181,7 @@ const PackageSection = () => {
             disabled={startIndex === 0}
           >
             <svg
-              className='w-6 h-6 text-gray-600'
+              className='w-6 h-6 text-gray-800'
               fill='none'
               stroke='currentColor'
               viewBox='0 0 24 24'

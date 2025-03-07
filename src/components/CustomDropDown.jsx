@@ -8,26 +8,25 @@ const CustomDropDown = ({ ...props }) => {
     padding: '32px 24px 16px 24px',
     borderRadius: '8px',
     position: 'fixed',
-    color: 'red',
     width: `${props.isFull ? '70%' : '250px'}`,
     transform: `${props.isFull ? 'translateX(-50%)' : 'none'}`,
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
   };
   return (
     <Dropdown {...props}>
-      <div className={`${props.isFull && 'left-[50%]'} ${props.useGrid ? 'grid grid-cols-4 gap-y-8': 'flex flex-col gap-y-2'}`} style={customStyle}>
+      <div className={`${props.isFull && 'left-[50%]'} ${props.useGrid ? 'grid grid-cols-3 gap-y-4 ': 'flex flex-col gap-y-2'}`} style={customStyle}>
         {props.items &&
           props.items.map((item, idx) => {
             // Added parentheses around (item, idx)
             return (
               <Dropdown.Item key={idx}>
-                <div className='flex flex-col justify-start items-start'>
+                <div className={`flex flex-col justify-start items-start ${props.useGrid ? 'mb-6': 'mb-2'}`}>
                   <div className='flex items-center mb-4'>
-                    {item.icon && <div className='mr-2'>{item.icon}</div>}
+                    {item.icon && <div className='mr-4 text-xl text-fpt-blue'>{item.icon}</div>}
                     {props.isTitleLink ? (
                       <a
                         href={item.href}
-                        className='font-medium text-gray-800 cursor-pointer'
+                        className='font-bold text-gray-800 cursor-pointer'
                       >
                         {item.title}
                       </a>
@@ -37,10 +36,10 @@ const CustomDropDown = ({ ...props }) => {
                       </h3>
                     )}
                   </div>
-                  <div className='flex flex-col gap-y-4'>
+                  <div className='flex flex-col gap-y-1'>
                     {item.children &&
                       item.children.map((child, indx) => (
-                        <ul className='space-y-2 pl-6' key={indx}>
+                        <ul className='space-y-2 pl-10' key={indx}>
                           <li>
                             <a
                               href={child.href}
