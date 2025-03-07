@@ -9,131 +9,36 @@ const initSections = [
     fptplay: [
       {
         id: 1,
-        title: 'Internet cáp quang tốc độ cao',
-        subTitle: 'Trải nghiệm Internet siêu tốc cho mọi nhu cầu',
-        packages: [
-          {
-            id: 1,
-            name: 'Internet GIGA',
-            speed: '150 Mbps',
-            price: '165,000đ',
-            image: '/images/goiinternetgigan.webp',
-            features: [
-              'Trang bị Modem wifi 6',
-              'Tốc độ Download/Upload 150Mbps',
-              'Phù hợp cá nhân, hộ gia đình có từ 3 thiết bị kết nối trở lên',
-            ],
-            popular: true,
-          },
-          {
-            id: 2,
-            name: 'Internet SKY',
-            speed: '250 Mbps',
-            price: '195,000đ',
-            image: '/images/internetsky.webp',
-            features: [
-              'Trang bị Modem wifi 6',
-              'Tốc độ Download/Upload 1Gbps',
-              'Phù hợp cá nhân, hộ gia đình có từ 8 thiết bị kết nối trở lên',
-            ],
-          },
-          {
-            id: 3,
-            name: 'Internet GIGA F1',
-            speed: '250 Mbps',
-            price: '185,000đ',
-            image: '/images/internetgigaf1.webp',
-            features: [
-              'Trang bị Modem wifi 6',
-              'Tặng 1 thiết bị Acces Point giá trị lên đến 1.000.000đ',
-              'Tốc độ Download/Upload 150Mbps',
-              'Phù hợp cá nhân, hộ gia đình',
-            ],
-          },
-          {
-            id: 4,
-            name: 'Internet SKY F1',
-            speed: '250 Mbps',
-            price: '225,000đ',
-            image: '/images/internetskyf1.webp',
-            features: [
-              'Trang bị Modem wifi 6',
-              'Tặng 1 thiết bị Acces Point giá trị lên đến 1.000.000đ',
-              'Tốc độ Download/Upload 1Gbps',
-              'Phù hợp cá nhân, hộ gia đình có từ 8 thiết bị kết nối trở lên',
-            ],
-          },
-          {
-            id: 5,
-            name: 'Internet META F1',
-            speed: '250 Mbps',
-            price: '315,000đ',
-            image: '/images/internetmetaf1.webp',
-            features: [
-              'Trang bị Modem wifi 6',
-              'Tặng 1 thiết bị Acces Point giá trị lên đến 1.000.000đ',
-              'Tốc độ Download/Upload 1Gbps',
-              'Phù hợp hộ gia đình lớn và game thủ',
-            ],
-          },
-        ],
-      },
-      {
-        id: 2,
-        title: 'Combo Internet siêu tiết kiệm',
+        title: 'Gói Combo Internet kèm Truyền hình FPT Play',
         subTitle:
-          'Tận hưởng internet tốc độ cao tại nhà, giữ cho toàn bộ ngôi nhà được phủ sóng Internet & Wi-Fi',
+          'Thỏa sức lướt web, xem phim, tận hưởng mọi hoạt động thể thao và giải trí không giới hạn',
         packages: [
           {
             id: 1,
-            name: 'Combo Truyền Hình',
-            price: '215,000đ',
-            image: '/images/goiinternetcombotruyenhinh.webp',
-            features: [
-              'Trang bị Modem wifi 6',
-              'Phù hợp cá nhân, hộ gia đình',
-              'Xem gần 170 kênh truyền hình và quốc tế',
-              'Tiết kiệm 950.000đ so với mua lẻ',
-            ],
-            popular: true,
-          },
-          {
-            id: 2,
-            name: 'Combo SKY',
+            name: 'Combo SKY Max',
             price: '235,000đ',
-            image: '/images/combosky.jpg',
+            image: '/images/goiinternetcombosky.webp',
             features: [
               'Trang bị Modem wifi 6 & FPT Play Box',
-              'Xem gần 130 kênh truyền hình trong nước & quốc tế',
-              'Phù hợp hộ gia đình',
+              'Xen gần 170 kênh truyền hình trong nước và quốc tế',
+              'Phù hợp hộ gia đình',
+              'Tiếp kiệm tới 590.000đ so với mua lẻ',
             ],
           },
           {
-            id: 3,
-            name: 'Combo Camera',
-            price: '192,000đ',
-            image: '/images/combointernetcameran.jpg',
-            features: [
-              'Trang bị Modem wifi 6',
-              'Trang bị Camera IQ3S kèm gói lưu trữ Cloud 3 ngày',
-              'Tặng 1 thiết bị Access Point',
-              'Tiếp kiệm 950.000đ so với mua lẻ',
-            ],
-          },
-          {
-            id: 4,
+            id: 2,
             name: 'Combo Giga F1',
             price: '245,600đ',
             image: '/images/goicombogigaf1.webp',
             features: [
               'Trang bị Modem wifi 6 & FPT Play Box',
-              'Xem gần 170 kênh truyền hình trong nước & quốc tế',
+              'Xem gần 170 kênh truyền hình trong nước & quốc tế',
               'Tặng 1 thiết bị Access Point',
               'Tiếp kiệm 1.540.000đ so với mua lẻ',
             ],
           },
           {
-            id: 5,
+            id: 3,
             name: 'Combo Sky F1',
             price: '265,600đ',
             image: '/images/goicomboskyf1.webp',
@@ -141,74 +46,74 @@ const initSections = [
               'Trang bị Modem wifi 6',
               'Tặng 1 thiết bị Acces Point giá trị lên đến 1.000.000đ',
               'Tốc độ Download/Upload 1Gbps',
-              'Phù hợp hộ gia đình lớn và game thủ',
+              'Phù hợp hộ gia đình lớn và game thủ',
+            ],
+          },
+          {
+            id: 4,
+            name: 'Combo META',
+            price: '335,000đ',
+            image: '/images/goiinternetcombometa.webp',
+            features: [
+              'Trang bị Modem Wi-Fi 6 & FPT Play Box',
+              'Xem gần 170 kênh truyền hình trong nước & quốc tế',
+              'Tốc độ lên đến 1 Gbps',
+              'Tiết kiệm tới 590.000đ so với mua lẻ',
             ],
           },
         ],
       },
       {
-        id: 3,
-        title: 'Internet FPT - Kết nối vượt trội cho Doanh nghiệp',
+        id: 2,
+        title: 'Chương trình truyền hình, phim ảnh, thể thao, giải trí bất tận',
         subTitle:
-          'Giải pháp Internet tốc độ cao từ FPT Telecom giúp duy trì kết nối liền mạch, phủ sóng Wi-Fi cho toàn bộ doanh nghiệp',
+          'Trải nghiệm truyền hình trực tuyến với FPT Play giúp bạn và gia đình giải trí không giới hạn',
         packages: [
           {
             id: 1,
-            name: 'Super250',
-            price: '545,000đ',
-            image: '/images/goidnsuper250.webp',
+            name: 'Gói XMAS',
+            price: '17,000đ',
+            image: '/images/goixmasgiadacbiet.webp',
             features: [
-              'Trang bị Modem Wi-Fi 6 Trang bị Modem Mikrotik RB760iGS/ EdgeRouter X SFP',
-              'Phù hợp cá nhân, doanh nghiệp nhỏ (<50 thiết bị)',
+              'Xem trực tiếp ASEAN Cup 2024 & các giải thể thao độc quyền',
+              'Xem gần 140 kênh truyền hình trong nước & quốc tế',
+              'Không quảng cáo khi xem video',
+              'Đăng nhập và xem cùng lúc trên 3 thiết bị',
             ],
             popular: true,
           },
           {
             id: 2,
-            name: 'Lux500',
-            price: '800,000đ',
-            image: '/images/goidnlux500.webp',
+            name: 'Gói SVIP',
+            price: '98,000đ',
+            image: '/images/goisvipfptplay.jpg',
             features: [
-              'Trang bị Modem Wi-Fi 6 & 1 thiết bị Access Point',
-              'Tích hợp Ultra Fast tối ưu tốc độ',
-              'Phù hợp cá nhân, doanh nghiệp (<125 thiết bị)',
+              'Bao gồm toàn bộ nội dung Gói SMAX+',
+              'Kho phim HBO GO đặc sắc',
+              '5 thiết bị đồng thời, HBO GO chỉ xem đồng thời 2 thiết bị',
             ],
           },
           {
             id: 3,
-            name: 'Lux800',
-            price: '1,000,000đ',
-            image: '/images/goidnlux800.webp',
+            name: 'Gói K+',
+            price: '175,000đ',
+            image: '/images/goikplusfptplay.jpg',
             features: [
-              'Trang bị Modem Wi-Fi 6 & 1 thiết bị Access Point',
-              'Tích hợp Ultra Fast tối ưu tốc độ',
-              'Phù hợp cá nhân, doanh nghiệp (<160 thiết bị)',
+              'Xem 5 kênh K+SPORT 1, K+SPORT 2, K+CINE, K+LIFE, K+KIDs',
+              'Xem trực tiếp Ngoại hạng Anh & các giải thể thao hàng đầu thế giới',
+              'Đăng nhập tối đa 3 thiết bị, chỉ xem cùng lúc tối đa 1 thiết bị',
             ],
           },
           {
             id: 4,
-            name: 'Combo Lux500',
-            price: '875,600đ',
-            image: '/images/combolux500.jpg',
+            name: 'Combo Giga F1',
+            price: '219,600đ',
+            image: '/images/goismaxkplusfptplay.jpg',
             features: [
-              'Trang bị Modem Wi-Fi 6 & 1 thiết bị Access Point',
-              'Tích hợp Ultra Fast tối ưu tốc độ',
-              'Xem gần 130 kênh truyền hình trong nước & quốc tế',
-              'Phù hợp cá nhân, doanh nghiệp (<125 thiết bị)',
-              'Tiết kiệm tới 1.200.000đ so với mua lẻ',
-            ],
-          },
-          {
-            id: 5,
-            name: 'Combo Lux800',
-            price: '1,075,600đ',
-            image: '/images/combolux800.jpg',
-            features: [
-              'Trang bị Modem Wi-Fi 6 & 1 thiết bị Access Point',
-              'Tích hợp Ultra Fast tối ưu tốc độ',
-              'Xem gần 130 kênh truyền hình trong nước & quốc tế',
-              'Phù hợp cá nhân, doanh nghiệp (<165 thiết bị)',
-              'Tiết kiệm tới 1.200.000đ so với mua lẻ',
+              'Bao gồm toàn bộ nội dung gói SMAX+ và K+',
+              'Xem Ngoại hạng Anh, NBA, PGA, MMA, cùng kho phim đa dạng',
+              'Hỗ trợ 3 thiết bị xem đồng thời cho nội dung thuộc gói SMAX+',
+              'Chỉ 1 thiết bị xem đồng thời cho nội dung thuộc gói K+',
             ],
           },
         ],
@@ -219,55 +124,56 @@ const initSections = [
     fptcamera: [
       {
         id: 1,
-        title: 'Kết nối Internet cho mọi phòng, mọi tầng, mọi nhà',
+        title: 'Mua 1 được 3 - Combo Internet & Camera FPT',
         subTitle:
-          'Tận hưởng internet tốc độ cao tại nhà, giữ cho toàn bộ ngôi nhà được phủ sóng Internet & Wi-Fi',
+          'Gói Internet tốc độ cao kèm Camera giám sát - Tiết kiệm đến 950K',
         packages: [
           {
             id: 1,
             name: 'Internet SKY',
-            price: '195,000đ',
-            image: '/images/internetsky.webp',
-            features: [
-              'Trang bị Modem wifi 6',
-              'Tốc độ Download/Upload 1Gbps',
-              'Phù hợp cá nhân, hộ gia đình có từ 8 thiết bị kết nối trở lên',
-            ],
-          },
-          {
-            id: 2,
-            name: 'Combo SKY Max',
-            price: '235,000đ',
-            image: '/images/goiinternetcombosky.webp',
-            features: [
-              'Trang bị Modem wifi 6 & FPT Play Box',
-              'Xen gần 170 kênh truyền hình trong nước và quốc tế',
-              'Phù hợp hộ gia đình',
-              'Tiếp kiệm tới 590.000đ so với mua lẻ',
-            ],
-          },
-          {
-            id: 3,
-            name: 'Combo Camera',
-            price: '192,000đ',
-            image: '/images/combointernetcameran.jpg',
-            features: [
-              'Trang bị Modem wifi 6',
-              'Tích hợp F-Safe bảo mật chống virus, mã độc, tấn công mạng',
-              'Tặng 1 thiết bị Access Point',
-              'Áp dụng tại HN & TP.HCM',
-            ],
-          },
-          {
-            id: 4,
-            name: 'F-Safe Home 1',
-            price: '235,000đ',
-            image: '/images/combointernetcameran.jpg',
+            price: '212,000đ',
+            image: '/images/combointernetcameragigaeyes3.jpg',
             features: [
               'Trang bị Modem wifi 6',
               'Trang bị Camera IQ3S kèm gói lưu trữ Cloud 3 ngày',
               'Tặng 1 thiết bị Access Point',
-              'Tiếp kiệm 950.000đ so với mua lẻ',
+              'Tiết kiệm đến 950.000đ so với mua lẻ'
+            ],
+          },
+          {
+            id: 2,
+            name: 'SkyEyes3 - Play3',
+            price: '220,000đ',
+            image: '/images/combointernetcameraskyeyes3play3.jpg',
+            features: [
+              'Trang bị Modem wifi 6',
+              'Trang bị Camera IQ3S kèm gói lưu trữ Cloud 3 ngày',
+              'Tặng 1 thiết bị Access Point',
+              'Tiết kiệm đến 950.000đ so với mua lẻ'
+            ],
+          },
+          {
+            id: 3,
+            name: 'SkyEyes3 - IQ2S',
+            price: '239,000đ',
+            image: '/images/combointernetcameraskyeyes3iq2s.jpg',
+            features: [
+              'Trang bị Modem wifi 6',
+              'Trang bị Camera IQ3S kèm gói lưu trữ Cloud 3 ngày',
+              'Tặng 1 thiết bị Access Point',
+              'Tiết kiệm đến 950.000đ so với mua lẻ'
+            ],
+          },
+          {
+            id: 4,
+            name: 'GigaEyes7 - IQ2S',
+            price: '274,000đ',
+            image: '/images/combointernetcameragigaeyes7.jpg',
+            features: [
+              'Trang bị Modem wifi 6',
+              'Trang bị Camera IQ3S kèm gói lưu trữ Cloud 7 ngày',
+              'Tặng 1 thiết bị Access Point',
+              'Tiết kiệm đến 950.000đ so với mua lẻ'
             ],
           },
         ],
@@ -335,7 +241,7 @@ const Carousel = ({ packages, visibleCards, onRegisterClick }) => {
               <div className='py-4 w-full flex flex-col items-center'>
                 <h2 className='text-2xl font-bold text-gray-800'>{pkg.name}</h2>
                 <span className='text-sm font-bold text-gray-500 mt-4'>
-                  Chỉ từ
+                  Chỉ từ
                 </span>
                 <div className='flex items-baseline mt-2'>
                   <span className='text-xl font-bold text-gray-800'>
@@ -427,7 +333,7 @@ const FptPlayPackage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { pathname } = location;
-  const defaultTabId = pathname.split('/')[1] || 'personal';
+  const defaultTabId = pathname.split('/')[1] || 'fptplay';
   const [activeTab, setActiveTab] = useState({
     id: defaultTabId,
     banner: 'images/internetcanhann.webp',
@@ -438,7 +344,7 @@ const FptPlayPackage = () => {
     () => [
       {
         id: 'fptplay',
-        label: 'Truyền hình FPT Play',
+        label: 'Truyền hình FPT Play',
         icon: FaWifi,
         banner: 'images/bannergoixmashomepage.webp',
       },
@@ -480,17 +386,15 @@ const FptPlayPackage = () => {
     },
     [navigate]
   );
-
-  return (
+  const fptSmarthome = (
     <>
-      {/* Banner Section */}
       <div
         className='bg-no-repeat bg-cover bg-center py-16 h-[32rem]'
         style={{ backgroundImage: `url(${activeTab.banner})` }}
-      />{' '}
+      />
       {/* Tabs */}
-      <div className='flex flex-row justify-center bg-white rounded-xl shadow-lg p-2'>
-        <div className='grid grid-cols-2 md:grid-cols-3 gap-2'>
+      <div className='flex flex-row justify-center bg-white rounded-xl shadow-lg p-2 mb-4'>
+        <div className='grid grid-cols-3 md:grid-cols-3 gap-2'>
           {tabs.map((tab) => {
             const Icon = tab.icon;
             return (
@@ -510,53 +414,91 @@ const FptPlayPackage = () => {
           })}
         </div>
       </div>
-      {location.pathname === '/fptsmarthome' && (
-        <>
-          <div className='flex flex-row items-stretch justify-center px-60 py-8 h-[400px] bg-white gap-x-8 mb-8'>
-            <div className='flex flex-col w-[45%] justify-start items-stretch gap-y-8'>
-              <h2 className='text-xl text-[#ff6634] font-bold'>GIỚI THIỆU</h2>
-              <div className='flex flex-col items-start justify-center gap-y-4'>
-                <h3 className='font-semibold'>FPT Smart Home</h3>
-                <p className='text-gray-600'>
-                  Chúng tôi mong muốn mang đến một không gian sống thông minh và
-                  hiện đại với chi phí hợp lý nhất cho người dân Việt Nam.
-                </p>
-              </div>
-              <div className='flex flex-col items-start justify-center gap-y-4'>
-                <h3 className='font-semibold'>Tầm nhìn</h3>
-                <p className='text-gray-600'>
-                  FPT Smart Home hướng đến trở thành đơn vị phát triển nhà thông
-                  minh hàng đầu không chỉ trong nước mà còn trên Thế giới. Chúng
-                  tôi luôn tiên phong đổi mới, ứng dụng kỹ thuật hiện đại, tích
-                  hợp công nghệ tiên tiến vào cuộc sống mỗi người dân.
-                </p>
-              </div>
-            </div>
-            <div className='w-[50%] bg-[url(images/smarthome-about.jpg)] rounded-[30px] h-full bg-cover bg-center bg-no-repeat'></div>
+      {/* Smart Home Introduction Section */}
+      <div className='flex flex-col md:flex-row items-end justify-center px-4 md:px-8 2xl:px-80 lg:px-36 py-8 pb-24'>
+        <div className='flex flex-col w-full md:w-[50%] justify-start items-stretch gap-y-8 mb-8 md:mb-0 md:mr-8'>
+          <h2 className='text-xl text-[#ff6634] font-bold'>GIỚI THIỆU</h2>
+          <div className='flex flex-col items-start justify-center gap-y-4'>
+            <h3 className='font-semibold text-gray-700'>FPT Smart Home</h3>
+            <p className='text-gray-600'>
+              Chúng tôi mong muốn mang đến một không gian sống thông minh và
+              hiện đại với chi phí hợp lý nhất cho người dân Việt Nam.
+            </p>
           </div>
-          <div className='flex flex-col items-center justify-center px-60 py-8 h-[1000px] bg-gray-300 gap-y-8'>
-            <div className='flex flex-col w-[100%]'>
-              <h1 className='text-3xl md:text-3xl font-bold text-gray-800 text-center'>
-                Tổng quan giải pháp nhà thông minh FPT Smart Home
-              </h1>
-            </div>
-            <div className='flex flex-col w-full h-[800px] bg-[url(images/hi1200.jpg)] bg-cover bg-center bg-no-repeat rounded-xl'></div>
+          <div className='flex flex-col items-start justify-center gap-y-4'>
+            <h3 className='font-semibold text-gray-700'>Tầm nhìn</h3>
+            <p className='text-gray-600'>
+              FPT Smart Home hướng đến trở thành đơn vị phát triển nhà thông
+              minh hàng đầu không chỉ trong nước mà còn trên Thế giới. Chúng tôi
+              luôn tiên phong đổi mới, ứng dụng kỹ thuật hiện đại, tích hợp công
+              nghệ tiên tiến vào cuộc sống mỗi người dân.
+            </p>
           </div>
-        </>
-      )}
+        </div>
+        <div className='w-full md:w-[50%] h-64 md:h-auto'>
+          <img
+            src='images/smarthome-about.png'
+            className='object-contain object-center w-full h-full'
+          />
+        </div>
+      </div>
+
+      {/* Smart Home Overview Section */}
+      <div className='flex flex-col items-center justify-center px-4 md:px-8 lg:px-36 py-12 gap-y-12 pb-24 bg-gray-200'>
+        <div className='flex flex-col w-full'>
+          <h1 className='text-xl md:text-2xl font-bold text-gray-800 text-center'>
+            Tổng quan giải pháp nhà thông minh FPT Smart Home
+          </h1>
+        </div>
+        <div className='flex flex-row justify-center items-center w-full rounded-xl'>
+          <img src='images/hi1200.jpg' className='object-cover rounded-xl' />
+        </div>
+      </div>
+    </>
+  );
+  if (location.pathname === '/fptsmarthome') return fptSmarthome;
+  return (
+    <>
+      {/* Banner Section */}
+      <div
+        className='bg-no-repeat bg-cover bg-center py-16 h-[32rem]'
+        style={{ backgroundImage: `url(${activeTab.banner})` }}
+      />
+      {/* Tabs */}
+      <div className='flex flex-row justify-center bg-white rounded-xl shadow-lg p-2 mb-4'>
+        <div className='grid grid-cols-3 md:grid-cols-3 gap-2'>
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => handleTabClick(tab)}
+                className={`flex items-center justify-center p-4 rounded-lg transition-all ${
+                  activeTab.id === tab.id
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-white text-gray-600 hover:bg-gray-50'
+                }`}
+              >
+                <Icon className='w-6 h-6 mr-3' />
+                <span className='font-medium'>{tab.label}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
       <div className='container mx-auto px-4'>
         {/* Render sections for the active tab */}
         {activeSections.map((item) => {
           const { id, title, subTitle, packages } = item;
           return (
             <div key={id}>
-              <div className='m-16'>
+              <div className='m-8 md:m-16'>
                 <div className='container mx-auto px-4'>
                   <div className='text-center text-white'>
-                    <h1 className='text-4xl md:text-4xl font-bold mb-4 text-gray-600'>
+                    <h1 className='text-3xl md:text-4xl font-bold mb-4 text-gray-600'>
                       {title}
                     </h1>
-                    <p className='text-xl md:text-xl text-gray-400'>
+                    <p className='text-lg md:text-xl text-gray-400'>
                       {subTitle}
                     </p>
                   </div>

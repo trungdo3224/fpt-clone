@@ -9,8 +9,12 @@ import InternetPackages from './pages/InternetPackages';
 import Register from './pages/Register';
 import FloatingPhone from './components/FloatingPhone';
 import FptPlay from './pages/FptPlay';
+import UnderDevelopment from './pages/UnderDevelopment';
+import FsafePage from './pages/FsafePage';
+import MedicarePage from './pages/MedicarePage';
 
 function App() {
+  const routes = ['news', 'promotions', 'support', 'about', 'contact'];
   return (
     <div className='min-h-screen bg-white'>
       <Header />
@@ -25,6 +29,12 @@ function App() {
         <Route path='/fptsmarthome' element={<FptPlay />} />
 
         <Route path='/register' element={<Register />} />
+        <Route path='/fsafe' element={<FsafePage />} />
+        <Route path='/fsafe-go' element={<FsafePage />} />
+        <Route path='/fptmedicare' element={<MedicarePage />} />
+        {routes.map((route, index) => (
+          <Route key={index} path={route} element={<UnderDevelopment />} />
+        ))}
       </Routes>
       <Footer />
       <BackToTopButton />

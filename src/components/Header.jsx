@@ -3,14 +3,7 @@ import {
   FaSearch,
   FaBars,
   FaTimes,
-  FaWifi,
-  FaTv,
-  FaHeadset,
 } from 'react-icons/fa';
-import { CgSmartHomeCooker } from 'react-icons/cg';
-import { MdOutlineHealthAndSafety, MdOutlineSettings, MdOutlineSecurity } from 'react-icons/md';
-import { IoMdInformationCircleOutline } from 'react-icons/io';
-import { HiOutlineOfficeBuilding } from 'react-icons/hi';
 import CustomDropDown from './CustomDropDown';
 
 const Header = () => {
@@ -18,7 +11,7 @@ const Header = () => {
     {
       id: 1,
       title: 'Internet Cáp Quang',
-      icon: <FaWifi />,
+      icon: <img src='images/icon-internet-fpt.png' className='w-6 h-6'/>,
       children: [
         {
           id: 1,
@@ -45,7 +38,7 @@ const Header = () => {
     {
       id: 2,
       title: 'Truyền hình & Giải trí',
-      icon: <FaTv />,
+      icon: <img src='images/icon-fptplay.png' className='w-6 h-6'/>,
       children: [
         {
           id: 1,
@@ -57,7 +50,7 @@ const Header = () => {
     {
       id: 3,
       title: 'Giám Sát Thông Minh',
-      icon: <CgSmartHomeCooker />,
+      icon: <img src='images/icon-smarthome.png' className='w-6 h-6'/>,
       children: [
         {
           id: 1,
@@ -74,7 +67,7 @@ const Header = () => {
     {
       id: 4,
       title: 'Bảo Mật An Toàn',
-      icon: <MdOutlineSecurity />,
+      icon: <img src='images/icon-safe.png' className='w-6 h-6' />,
       children: [
         {
           id: 1,
@@ -91,7 +84,7 @@ const Header = () => {
     {
       id: 5,
       title: 'Sức khỏe & Y Tế',
-      icon: <MdOutlineHealthAndSafety />,
+      icon: <img src='images/icon-fpt-medicare.png' className='w-6 h-6'/>,
       children: [
         {
           id: 1,
@@ -115,7 +108,7 @@ const Header = () => {
     {
       id: 1,
       title: 'Hỗ trợ thông tin',
-      icon: <IoMdInformationCircleOutline />,
+      icon: <img src='images/icon-ho-tro-thong-tin.png' className='w-6 h-6'/>,
       children: [
         {
           id: 1,
@@ -142,7 +135,7 @@ const Header = () => {
     {
       id: 2,
       title: 'Hỗ trợ kỹ thuật',
-      icon: <MdOutlineSettings />,
+      icon: <img src='images/icon-ho-tro-ky-thuat.png' className='w-6 h-6'/>,
       children: [
         {
           id: 1,
@@ -157,7 +150,7 @@ const Header = () => {
     {
       id: 3,
       title: 'Nhân viên hỗ trợ',
-      icon: <FaHeadset />,
+      icon: <img src='images/icon-lien-he-24-7.png' className='w-6 h-6'/>,
       children: [
         {
           id: 1,
@@ -176,7 +169,7 @@ const Header = () => {
     {
       id: 4,
       title: 'Phòng giao dịch',
-      icon: <HiOutlineOfficeBuilding />,
+      icon: <img src='images/device-message.png' className='w-6 h-6'/>,
       children: [
         {
           id: 1,

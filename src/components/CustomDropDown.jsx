@@ -43,7 +43,7 @@ const CustomDropDown = ({ ...props }) => {
                           <li>
                             <a
                               href={child.href}
-                              className='text-gray-600 font-medium hover:text-fpt-red text-sm cursor-pointer'
+                              className='text-gray-600 font-medium hover:text-fpt-orange text-sm cursor-pointer'
                             >
                               {child.title}
                             </a>

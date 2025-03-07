@@ -129,7 +129,7 @@ const PackageSection = () => {
                   className='package-card bg-gray-50 rounded-lg shadow-md overflow-hidden'
                   style={{ flex: `0 0 calc(${100 / visibleCards}% - 0.8rem)` }}
                 >
-                  <div className='items-center w-full h-72 md:mb-2 sm:mb-52'>
+                  <div className='items-center w-full 2xl:h-80 lg:h-56 md:h-80 md:mb-2 sm:mb-12'>
                     <img
                       src={`${pkg.backgroundImage}`}
                       className='object-cover'

@@ -32,7 +32,7 @@ const CategorySection = () => {
     <div className="my-12">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         {categories.map((category) => (
-          <div key={category.id} className="category-card relative rounded-lg overflow-hidden cursor-pointer">
+          <div key={category.id} className="category-card relative rounded-lg overflow-hidden">
             <div className="aspect-w-1 aspect-h-1">
               <img 
                 src={category.image} 
