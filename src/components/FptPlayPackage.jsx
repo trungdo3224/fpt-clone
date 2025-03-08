@@ -415,7 +415,7 @@ const FptPlayPackage = () => {
         </div>
       </div>
       {/* Smart Home Introduction Section */}
-      <div className='flex flex-col md:flex-row items-end justify-center px-4 md:px-8 2xl:px-80 lg:px-36 py-8 pb-24'>
+      <div className='flex flex-col md:flex-row items-end justify-center px-4 md:px-8 2xl:px-32 lg:px-32 py-8 pb-24'>
         <div className='flex flex-col w-full md:w-[50%] justify-start items-stretch gap-y-8 mb-8 md:mb-0 md:mr-8'>
           <h2 className='text-xl text-[#ff6634] font-bold'>GIỚI THIỆU</h2>
           <div className='flex flex-col items-start justify-center gap-y-4'>
@@ -461,7 +461,7 @@ const FptPlayPackage = () => {
     <>
       {/* Banner Section */}
       <div
-        className='bg-no-repeat bg-cover bg-center py-16 h-[32rem]'
+        className='bg-no-repeat bg-cover bg-center py-16 h-[32rem] '
         style={{ backgroundImage: `url(${activeTab.banner})` }}
       />
       {/* Tabs */}
@@ -486,14 +486,14 @@ const FptPlayPackage = () => {
           })}
         </div>
       </div>
-      <div className='container mx-auto px-4'>
+      <div className='px-32 py-4'>
         {/* Render sections for the active tab */}
         {activeSections.map((item) => {
           const { id, title, subTitle, packages } = item;
           return (
             <div key={id}>
               <div className='m-8 md:m-16'>
-                <div className='container mx-auto px-4'>
+                <div className=''>
                   <div className='text-center text-white'>
                     <h1 className='text-3xl md:text-4xl font-bold mb-4 text-gray-600'>
                       {title}

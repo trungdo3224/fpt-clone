@@ -227,7 +227,7 @@ const Medicare = () => {
         style={{ backgroundImage: `url(${activeTab.banner})` }}
       />
       {/* Tabs */}
-      <div className='flex flex-row justify-center bg-white rounded-xl shadow-lg p-2'>
+      <div className='flex flex-row justify-center bg-white rounded-xl shadow-lg px-32 py-4'>
         <div className='grid grid-cols-2 gap-2'>
           {tabs.map((tab) => {
             const Icon = tab.icon;

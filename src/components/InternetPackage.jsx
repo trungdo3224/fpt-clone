@@ -633,21 +633,20 @@ const InternetPackage = () => {
         </div>
       </div>
 
-      <div className='container mx-auto px-4 mt-6'>
-        {/* Tabs */}
+      <div className=' mx-auto mt-6'>
 
         {/* Render sections for the active tab */}
         {activeSections.map((item) => {
           const { id, title, subTitle, packages } = item;
           return (
-            <div key={id}>
-              <div className='m-16'>
-                <div className='container mx-auto px-4'>
-                  <div className='text-center text-white'>
-                    <h1 className='text-4xl md:text-4xl font-bold mb-4 text-gray-600'>
+            <div key={id} className="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-4">
+              <div className=''>
+                <div className='mx-auto'>
+                  <div className='text-center'>
+                    <h1 className='text-2xl sm:text-3xl md:text-4xl font-bold mb-2 md:mb-4 text-gray-600'>
                       {title}
                     </h1>
-                    <p className='text-xl md:text-xl text-gray-400'>
+                    <p className='text-base sm:text-lg md:text-xl text-gray-400 px-2 md:px-8 lg:px-24'>
                       {subTitle}
                     </p>
                   </div>

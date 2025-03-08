@@ -3,9 +3,9 @@ import { FaFacebookF, FaYoutube, FaInstagram, FaMapMarkerAlt, FaPhone, FaEnvelop
 
 const Footer = () => {
   return (
-    <footer className='bg-gray-50 text-gray-900 border-gray-700'>
+    <footer className='bg-gray-50 text-gray-900 border-gray-700 px-32'>
       {/* Main Footer Content */}
-      <div className='container mx-auto px-4 pt-16 pb-8'>
+      <div className='container mx-auto pt-16 pb-8'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
           {/* Company Info */}
           <div className='space-y-6'>

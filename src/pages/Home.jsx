@@ -10,7 +10,7 @@ const Home = () => {
     <>
       <Banner />
       <QuickLinks />
-      <div className='px-12 md:px-20 xl:px-48 lg:py-16 box-border'>
+      <div className='px-12 md:px-20 xl:px-32 lg:py-16 box-border'>
         <PackageSection />
         <CategorySection />
         <PromotionBanners />
