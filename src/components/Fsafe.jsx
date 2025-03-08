@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import RegisterModal from './RegisterModal';
-import { FaCheck, FaWifi, FaHome, FaGamepad, FaBuilding } from 'react-icons/fa';
+import { FaCheck, FaWifi, FaHome } from 'react-icons/fa';
 
 // Static sections data (unchanged)
 const initSections = [
@@ -315,14 +315,13 @@ const Fsafe = () => {
         </div>
       </div>
 
-      <div className='container mx-auto px-4 mt-6'>
-        {/* Tabs */}
+      <div className='mx-auto mt-6'>
 
         {/* Render sections for the active tab */}
         {activeSections.map((item) => {
           const { id, title, subTitle, packages } = item;
           return (
-            <div key={id}>
+            <div key={id} className="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-4">
               <div className='m-16'>
                 <div className='container mx-auto px-4'>
                   <div className='text-center text-white'>

@@ -177,7 +177,7 @@ const Navbar = () => {
   return (
     <nav
       ref={navbarRef}
-      className={`w-full h-full px-4 sm:px-6 lg:px-8 flex flex-row justify-between items-center ${deviceSpecificClass}`}
+      className={`w-full h-full flex flex-row justify-between items-center ${deviceSpecificClass}`}
     >
       {/* Logo */}
       <div className="flex-shrink-0">
@@ -239,7 +239,7 @@ const Navbar = () => {
         {/* News */}
         <li className="group relative h-full">
           <Link
-            to="/news"
+            to=""
             className="flex items-center h-full px-2 lg:px-4 text-gray-700 font-semibold text-base lg:text-lg whitespace-nowrap"
           >
             <span>Tin tức</span>
@@ -267,7 +267,7 @@ const Navbar = () => {
         {/* Promotions */}
         <li className="group relative h-full">
           <Link
-            to="/promotions"
+            to="/"
             className="flex items-center h-full px-2 lg:px-4 text-gray-700 font-semibold text-base lg:text-lg"
           >
             <span>Ưu đãi</span>
@@ -295,7 +295,7 @@ const Navbar = () => {
         {/* Support */}
         <li className="group relative h-full">
           <Link
-            to="/support"
+            to="/"
             className="flex items-center h-full px-2 lg:px-4 text-gray-700 font-semibold text-base lg:text-lg"
           >
             <span>Hỗ trợ</span>
@@ -343,7 +343,7 @@ const Navbar = () => {
         {/* Others */}
         <li className="group relative h-full">
           <Link
-            to="/others"
+            to="/"
             className="flex items-center h-full px-2 lg:px-4 text-gray-700 font-semibold text-base lg:text-lg"
           >
             <span>Khác</span>
@@ -376,9 +376,9 @@ const Navbar = () => {
           <input
             type="text"
             placeholder="Tìm kiếm..."
-            className="w-[100px] sm:w-[120px] lg:w-[150px] h-[40px] sm:h-[48px] bg-gray-100 rounded-full px-4 text-sm focus:outline-none focus:ring-2 focus:ring-fpt-orange"
+            className="w-[100px] sm:w-[120px] lg:w-[150px] h-[40px] sm:h-[48px] bg-gray-100 rounded-full px-4 text-sm focus:outline-none focus:ring-2"
           />
-          <button className="absolute right-3 hover:text-fpt-orange opacity-60">
+          <button className="absolute right-3 hover:opacity-40 opacity-60">
             <FaSearch className="search-icon w-4 h-4 lg:w-5 lg:h-5" />
           </button>
         </div>

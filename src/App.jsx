@@ -14,7 +14,7 @@ import FsafePage from './pages/FsafePage';
 import MedicarePage from './pages/MedicarePage';
 
 function App() {
-  const routes = ['news', 'promotions', 'support', 'about', 'contact'];
+  const routes = ['news', 'promotions', 'support', 'about', 'contact', 'loyalty', 'referral'];
   return (
     <div className='min-h-screen bg-white'>
       <Header />

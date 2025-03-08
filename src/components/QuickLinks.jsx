@@ -3,7 +3,7 @@ import { FaBox, FaRegCreditCard, FaHeadset, FaGift } from 'react-icons/fa';
 
 const QuickLinks = () => {
   return (
-    <div className="bg-white py-4 shadow-md">
+    <div className="bg-white py-4 shadow-md px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="flex items-center p-4">

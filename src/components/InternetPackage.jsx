@@ -633,7 +633,7 @@ const InternetPackage = () => {
         </div>
       </div>
 
-      <div className=' mx-auto mt-6'>
+      <div className='mx-auto mt-6'>
 
         {/* Render sections for the active tab */}
         {activeSections.map((item) => {
