@@ -1,182 +1,81 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import RegisterModal from './RegisterModal';
-import { FaCheck, FaWifi, FaHome, FaGamepad, FaBuilding } from 'react-icons/fa';
+import { FaCheck, FaWifi } from 'react-icons/fa';
 
-// Static sections data (unchanged)
 const initSections = [
   {
     fptmedicare: [
       {
         id: 1,
-        title: 'FPT MediCare Làm chủ đường huyết - Làm chủ cuộc sống',
-        subTitle: 'Máy đo đường huyết FPT Nipro Premier Alpha',
+        title: 'FPT MediCare',
+        subTitle: 'Làm chủ đường huyết - Làm chủ cuộc sống',
+        description: 'Máy đo đường huyết FPT Nipro Premier Alpha',
         packages: [
           {
             id: 1,
-            name: 'F-Safe Home 1',
-            price: '235,000đ',
-            image: '/images/goifsafehome1n.webp',
+            name: 'Combo Máy đo đường huyết và Que thử đường huyết NIPRO Premier Alpha',
+            price: '990,000đ',
+            image: '/images/f-medicare1.png',
             features: [
-              'Trang bị Modem wifi 6 & FPT Play Box',
-              'Tích hợp F-Safe bảo mật chống virus, mã độc, tấn công mạng',
-              'Tặng 1 thiết bị Access Point',
-              'Áp dụng tại HN & TP.HCM',
+              'Máy đo đường huyết chính xác',
+              'Que thử đường huyết kèm theo',
+              'Bảo hành chính hãng',
+            ],
+          },
+          {
+            id: 2,
+            name: 'Que thử đường huyết NIPRO Premier (25T)',
+            price: '250,000đ',
+            image: '/images/f-medicare2.png',
+            features: [
+              'Que thử chính hãng',
+              'Đóng gói 25 que/hộp',
+              'Độ chính xác cao',
+            ],
+          },
+          {
+            id: 3,
+            name: 'Máy đo đường huyết NIPRO Premier Alpha',
+            price: '990,000đ',
+            image: '/images/maydoduonghuyetnipropremieralpha.png',
+            features: [
+              'Thiết kế nhỏ gọn',
+              'Đo nhanh trong 5 giây',
+              'Lưu trữ 500 kết quả',
             ],
           },
         ],
+      },
+      {
+        id: 2,
+        title: 'Ứng dụng theo dõi và quản lý đường huyết FPT Medicare',
+        subTitle: '',
+        description: 'Giải pháp quản lý đường huyết thông minh cho người bệnh tiểu đường',
+        image: '/images/fptmedicare.png',
       },
     ],
   },
 ];
 
-//
-// Custom hook to determine visible cards based on screen width
-//
-function useVisibleCards() {
-  const getVisibleCards = () => {
-    if (window.innerWidth >= 1024) return 4;
-    if (window.innerWidth >= 768) return 2;
-    return 1;
-  };
-
-  const [visibleCards, setVisibleCards] = useState(getVisibleCards());
-
-  useEffect(() => {
-    const handleResize = () => setVisibleCards(getVisibleCards());
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return visibleCards;
-}
-
-//
-// Carousel Component for packages
-//
-const Carousel = ({ packages, visibleCards, onRegisterClick }) => {
-  const [startIndex, setStartIndex] = useState(0);
-  const translatePercentage = startIndex * (100 / visibleCards);
-
-  const handlePrevious = useCallback(() => {
-    setStartIndex((prev) => Math.max(0, prev - 1));
-  }, []);
-
-  const handleNext = useCallback(() => {
-    setStartIndex((prev) => Math.min(packages.length - visibleCards, prev + 1));
-  }, [packages.length, visibleCards]);
-
+const ProductCard = ({ product }) => {
   return (
-    <div className='relative'>
-      <div className='overflow-hidden py-8'>
-        <div
-          className='flex gap-4 transition-transform duration-700 ease-in-out'
-          style={{ transform: `translateX(-${translatePercentage}%)` }}
-        >
-          {packages.map((pkg) => (
-            <div
-              key={pkg.id}
-              className='package-card bg-gray-50 rounded-lg shadow-md overflow-hidden'
-              style={{ flex: `0 0 calc(${100 / visibleCards}% - 0.8rem)` }}
-            >
-              <div className='items-center w-full h-72 md:mb-2 sm:mb-52'>
-                <img
-                  src={pkg.image}
-                  alt={pkg.name}
-                  className='object-cover w-full h-full'
-                />
-              </div>
-              <div className='py-4 w-full flex flex-col items-center'>
-                <h2 className='text-2xl font-bold text-gray-800'>{pkg.name}</h2>
-                <span className='text-sm font-bold text-gray-500 mt-4'>
-                  Chỉ từ
-                </span>
-                <div className='flex items-baseline mt-2'>
-                  <span className='text-xl font-bold text-gray-800'>
-                    {pkg.price}
-                  </span>
-                  <span className='text-gray-600 ml-1'>/tháng</span>
-                </div>
-              </div>
-              <div className='p-6 flex flex-col h-72'>
-                <ul className='space-y-4 flex-grow whitespace-normal break-words line-clamp-3 h-full'>
-                  {pkg.features.map((feature, index) => (
-                    <li key={index} className='flex items-start'>
-                      <FaCheck className='text-green-500 mt-1 mr-2 flex-shrink-0' />
-                      <p className='text-sm text-gray-600'>{feature}</p>
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  onClick={() => onRegisterClick(pkg)}
-                  className='w-full mt-auto bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition'
-                >
-                  Đăng ký ngay
-                </button>
-              </div>
-            </div>
-          ))}
+    <div className='bg-gray-200 rounded-lg shadow-md overflow-hidden'>
+      <div>
+        <img
+          src={product.image}
+          alt={product.name}
+          className='w-full h-96 object-cover'
+        />
+        <div className='flex flex-col p-4'>
+          <h3 className='text-lg font-semibold mt-4'>{product.name}</h3>
+          <p className='text-blue-600 font-bold mt-2'>Chỉ từ: {product.price}</p>
         </div>
       </div>
-      {packages.length > visibleCards && (
-        <>
-          <button
-            className={`absolute -left-5 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10 ${
-              startIndex === 0
-                ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-gray-100'
-            }`}
-            onClick={handlePrevious}
-            disabled={startIndex === 0}
-          >
-            <svg
-              className='w-6 h-6 text-gray-600'
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='2'
-                d='M15 19l-7-7 7-7'
-              ></path>
-            </svg>
-          </button>
-          <button
-            className={`absolute -right-5 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10 ${
-              startIndex >= packages.length - visibleCards
-                ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-gray-100'
-            }`}
-            onClick={handleNext}
-            disabled={startIndex >= packages.length - visibleCards}
-          >
-            <svg
-              className='w-6 h-6 text-gray-600'
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='2'
-                d='M9 5l7 7-7 7'
-              ></path>
-            </svg>
-          </button>
-        </>
-      )}
     </div>
   );
 };
 
-//
-// Main Medicare Component
-//
 const Medicare = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -187,23 +86,18 @@ const Medicare = () => {
     banner: 'images/fptmedicare.png',
   });
 
-  // Memoize tabs to avoid unnecessary re-renders.
-  const tabs = useMemo(() => [
-    {
-      id: 'fptmedicare',
-      label: 'Medicare',
-      icon: FaWifi,
-      banner: 'images/fptmedicare.png',
-    },
-  ]);
+  const tabs = useMemo(
+    () => [
+      {
+        id: 'fptmedicare',
+        label: 'Medicare',
+        icon: FaWifi,
+        banner: 'images/fptmedicare.png',
+      },
+    ],
+    []
+  );
 
-  // Compute active sections from initSections based on activeTab
-  const activeSections = useMemo(() => {
-    const sectionObj = initSections.find((sec) => sec[activeTab.id]);
-    return sectionObj ? sectionObj[activeTab.id] : [];
-  }, [activeTab]);
-
-  const visibleCards = useVisibleCards();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
 
@@ -219,16 +113,23 @@ const Medicare = () => {
     },
     [navigate]
   );
+
+  const activeSections = useMemo(() => {
+    const sectionObj = initSections.find((sec) => sec[activeTab.id]);
+    return sectionObj ? sectionObj[activeTab.id] : [];
+  }, [activeTab]);
+
   return (
-    <>
+    <div className='min-h-screen bg-gradient-to-b from-blue-50 to-white'>
       {/* Banner Section */}
       <div
         className='bg-no-repeat bg-cover bg-center py-16 h-[28rem]'
         style={{ backgroundImage: `url(${activeTab.banner})` }}
       />
+
       {/* Tabs */}
       <div className='flex flex-row justify-center bg-white rounded-xl shadow-lg p-2'>
-        <div className='grid grid-cols-2 gap-2'>
+        <div className='grid grid-cols-1 gap-2'>
           {tabs.map((tab) => {
             const Icon = tab.icon;
             return (
@@ -249,41 +150,50 @@ const Medicare = () => {
         </div>
       </div>
 
-      <div className='container mx-auto px-4 mt-6'>
-        {/* Tabs */}
-
-        {/* Render sections for the active tab */}
-        {activeSections.map((item) => {
-          const { id, title, subTitle, packages } = item;
-          return (
-            <div key={id}>
-              <div className='m-16'>
-                <div className='container mx-auto px-4'>
-                  <div className='text-center text-white'>
-                    <h1 className='text-4xl md:text-4xl font-bold mb-4 text-gray-600'>
-                      {title}
-                    </h1>
-                    <p className='text-xl md:text-xl text-gray-400'>
-                      {subTitle}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <Carousel
-                packages={packages}
-                visibleCards={visibleCards}
-                onRegisterClick={handleRegisterClick}
-              />
+      <div className='container mx-auto px-36 py-12'>
+        {activeSections.map((section) => (
+          <div key={section.id} className='mb-24'>
+            <div className='flex flex-col gap-y-2 text-center mb-12'>
+              <h1 className='text-4xl font-bold text-gray-800 mb-4'>
+                {section.title}
+              </h1>
+              <p className='text-4xl font-bold text-gray-800 mb-4'>
+                {section.subTitle}
+              </p>
+              <p className='text-lg text-gray-800'>{section.description}</p>
             </div>
-          );
-        })}
+
+            {section.packages && (
+              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+                {section.packages.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    onRegisterClick={handleRegisterClick}
+                  />
+                ))}
+              </div>
+            )}
+
+            {section.image && (
+              <div className='mt-12'>
+                <img
+                  src={section.image}
+                  alt='FPT Medicare App'
+                  className='w-full max-w-4xl mx-auto rounded-lg shadow-lg'
+                />
+              </div>
+            )}
+          </div>
+        ))}
       </div>
+
       <RegisterModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         selectedPackage={selectedPackage}
       />
-    </>
+    </div>
   );
 };
 
