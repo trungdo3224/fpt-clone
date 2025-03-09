@@ -29,7 +29,7 @@ const NewsSection = () => {
   ];
 
   return (
-    <div className="my-12">
+    <div className="my-12 md:mt-32 lg:mt-56">
       <h2 className="text-3xl font-bold text-center text-gray-800 mb-4">Tin tức</h2>
       <p className="text-center text-l text-gray-600 mb-8">Thông cáo báo chí</p>
       

@@ -115,7 +115,7 @@ const PackageSection = () => {
           gia đình
         </p>
 
-        <div className='relative '>
+        <div className='relative'>
           {/* Carousel container with overflow-hidden */}
           <div className='overflow-hidden py-8'>
             {/* Slide container with custom slide effect */}
@@ -126,16 +126,16 @@ const PackageSection = () => {
               {packages.map((pkg) => (
                 <div
                   key={pkg.id}
-                  className='package-card bg-gray-50 rounded-lg shadow-md overflow-hidden'
+                  className='package-card flex flex-col gap-y-4 justify-between bg-gray-50 rounded-lg shadow-md overflow-hidden'
                   style={{ flex: `0 0 calc(${100 / visibleCards}% - 0.8rem)` }}
                 >
-                  <div className='items-center w-full 2xl:h-80 lg:h-56 md:h-80 md:mb-2 sm:mb-12'>
+                  <div className='items-center w-full'>
                     <img
                       src={`${pkg.backgroundImage}`}
                       className='object-cover'
                     />
                   </div>
-                  <div className='py-4 w-full flex flex-col items-center'>
+                  <div className='w-full flex flex-col items-center'>
                     <h3 className='text-xl font-bold text-gray-800'>
                       {pkg.name}
                     </h3>
@@ -149,7 +149,7 @@ const PackageSection = () => {
                       <span className='text-gray-600 ml-1'>/tháng</span>
                     </div>
                   </div>
-                  <div className='p-6 flex flex-col h-56'>
+                  <div className='flex flex-col gap-y-4 p-6 h-60'>
                     <ul className='space-y-3 flex-grow overflow-hidden whitespace-normal break-words line-clamp-3'>
                       {pkg.features.map((feature, index) => (
                         <li key={index} className='flex items-start'>
@@ -160,7 +160,7 @@ const PackageSection = () => {
                     </ul>
                     <button
                       onClick={() => handleRegisterClick(pkg)}
-                      className='w-full mt-auto bg-blue-700 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition'
+                      className='w-full bg-blue-700 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition'
                     >
                       Đăng ký ngay
                     </button>

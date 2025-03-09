@@ -187,7 +187,7 @@ const Navbar = () => {
       </div>
 
       {/* Desktop Navigation */}
-      <ul className="hidden md:flex flex-row gap-1 lg:gap-4 h-full">
+      <ul className="hidden md:hidden lg:flex flex-row gap-1 lg:gap-4 h-full">
         {/* Products */}
         <li className="group relative h-full">
           <Link
@@ -384,13 +384,13 @@ const Navbar = () => {
         </div>
 
         {/* Tablet Search Icon */}
-        <button className="hidden md:flex lg:hidden hover:text-fpt-orange">
+        <button className="hidden md:hidden lg:hidden hover:text-fpt-orange">
           <FaSearch className="search-icon w-5 h-5" />
         </button>
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden hover:text-fpt-orange p-2"
+          className="md:flex hover:text-fpt-orange p-2"
           onClick={toggleMobileMenu}
           aria-label="Open menu"
         >
@@ -400,7 +400,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 z-40 md:hidden">
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 z-40 md:flex lg:hidden">
           <div className="fixed inset-y-0 right-0 max-w-xs w-full bg-white shadow-xl z-50 overflow-y-auto transition-transform duration-300">
             <div className="p-4 border-b flex justify-between items-center">
               <a href="/">
@@ -411,7 +411,7 @@ const Navbar = () => {
                 className="text-gray-700 hover:text-fpt-red focus:outline-none"
                 aria-label="Close menu"
               >
-                <FaTimes className="h-6 w-6" />
+                <FaTimes className="h-8 w-8" />
               </button>
             </div>
 
