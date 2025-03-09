@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import RegisterModal from './RegisterModal';
-import { FaCheck, FaWifi, FaHome, FaGamepad, FaBuilding } from 'react-icons/fa';
+import { FaCheck,FaTv } from 'react-icons/fa';
+import { MdOutlineVideoCameraFront } from "react-icons/md";
+import { TbSmartHome } from "react-icons/tb";
 
 // Static sections data (unchanged)
 const initSections = [
@@ -345,19 +347,19 @@ const FptPlayPackage = () => {
       {
         id: 'fptplay',
         label: 'Truyền hình FPT Play',
-        icon: FaWifi,
+        icon: FaTv,
         banner: 'images/bannergoixmashomepage.webp',
       },
       {
         id: 'fptcamera',
         label: 'FPT Camera',
-        icon: FaHome,
+        icon: MdOutlineVideoCameraFront ,
         banner: 'images/fptcameramua1duoc3new.jpg',
       },
       {
         id: 'fptsmarthome',
         label: 'FPT Smart Home',
-        icon: FaGamepad,
+        icon: TbSmartHome,
         banner: 'images/bannersmarthome.png',
       },
     ],

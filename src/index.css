@@ -12,6 +12,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .banner-bg {
@@ -105,9 +106,65 @@ nav ul li > button::after {
   transition: background-color 0.2s ease;
 }
 
-/* nav ul li:hover > a::after,
-nav ul li:hover > button::after {
-} */
+/* Responsive Styles */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .banner-bg {
+    height: 200px !important;
+  }
+  
+  .package-card {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mega-menu {
+    position: static;
+    width: 100%;
+  }
+  
+  .nav-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Utility Classes */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
 
 /* iPad Mini Portrait */
 @media only screen and (width: 768px) and (resolution: 163dpi) {
@@ -149,5 +206,44 @@ nav ul li:hover > button::after {
   .navbar-ipad-mini-landscape .dropdown-icon {
     width: 0.875rem;
     height: 0.875rem;
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  .mobile-menu {
+    height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .mobile-nav-item {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .mobile-submenu {
+    padding-left: 1rem;
+  }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .tablet-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .tablet-padding {
+    padding: 2rem;
+  }
+}
+
+/* Desktop Optimizations */
+@media (min-width: 1025px) {
+  .desktop-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .desktop-padding {
+    padding: 3rem;
   }
 }
