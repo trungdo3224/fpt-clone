@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import RegisterModal from './RegisterModal';
-import { FaCheck, FaWifi } from 'react-icons/fa';
+import { FaHandHoldingMedical } from "react-icons/fa6";
 
 const initSections = [
   {
@@ -97,7 +97,7 @@ const Medicare = () => {
       {
         id: 'fptmedicare',
         label: 'Medicare',
-        icon: FaWifi,
+        icon: FaHandHoldingMedical,
         banner: 'images/fptmedicare.png',
       },
     ],

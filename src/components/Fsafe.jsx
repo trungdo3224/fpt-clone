@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import RegisterModal from './RegisterModal';
-import { FaCheck, FaWifi, FaHome } from 'react-icons/fa';
+import { FaCheck } from 'react-icons/fa';
+import { AiOutlineSafety } from "react-icons/ai";
+import { SiSecurityscorecard } from "react-icons/si";
 
 // Static sections data (unchanged)
 const initSections = [
@@ -250,13 +252,13 @@ const Fsafe = () => {
       {
         id: 'fsafe',
         label: 'F-Safe',
-        icon: FaWifi,
+        icon: AiOutlineSafety,
         banner: 'images/fsafeinternetantoanketnoi.jpg',
       },
       {
         id: 'fsafe-go',
         label: 'F-Safe Go',
-        icon: FaHome,
+        icon: SiSecurityscorecard,
         banner: 'images/fptcameramua1duoc3new.jpg',
       },
     ],
