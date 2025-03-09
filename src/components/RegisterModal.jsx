@@ -45,6 +45,7 @@ const RegisterModal = ({ isOpen, onClose, selectedPackage }) => {
 
   return (
     <AnimatePresence>
+      <Toaster position="top-center" />
       {isOpen && (
         <motion.div
           initial={{ opacity: 0 }}

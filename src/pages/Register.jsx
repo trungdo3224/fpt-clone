@@ -34,7 +34,7 @@ const Register = () => {
         name: data.name,
         phone: data.phone,
         email: data.email || 'Not provided',
-        service: data.service,
+        package_name: data.service,
         address: data.address,
         notes: data.notes || 'No notes',
       };
@@ -186,10 +186,15 @@ const Register = () => {
                     } focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors`}
                   >
                     <option value=''>-- Chọn dịch vụ --</option>
-                    <option value='internet'>Internet Cáp Quang</option>
-                    <option value='tv'>Truyền hình FPT</option>
-                    <option value='camera'>Camera FPT</option>
-                    <option value='combo'>Combo Internet + Truyền hình</option>
+                    <option value='Gói Cáp Quang Cá nhân'>Gói Cáp Quang Cá nhân</option>
+                    <option value='Gói Cáp Quang Doanh Nghiệp'>Gói Cáp Quang Doanh Nghiệp</option>
+                    <option value='Truyền Hình FPT'>Truyền Hình FPT</option>
+                    <option value='Combo Internet + Truyền hình'>Combo Internet + Truyền hình</option>
+                    <option value='FPT Camera'>FPT Camera</option>
+                    <option value='Combo Internet + Camera'>Combo Internet + Camera</option>
+                    <option value='FPT Play Box'>FPT Play Box</option>
+                    <option value='FPT iHome'>FPT iHome</option>
+                    <option value='Dich Vụ Khác'>Dich Vụ Khác</option>
                   </select>
                   {errors.service && (
                     <motion.p
