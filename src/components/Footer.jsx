@@ -1,36 +1,37 @@
 import React from 'react';
-import { FaFacebookF, FaYoutube, FaInstagram, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className='bg-gray-50 text-gray-900 border-gray-700 px-32'>
+    <footer className='bg-gray-50 text-gray-900 border-gray-700 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-32'>
       {/* Main Footer Content */}
-      <div className='container mx-auto pt-16 pb-8'>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
+      <div className='container mx-auto pt-10 md:pt-16 pb-6 md:pb-8'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6 lg:gap-8'>
           {/* Company Info */}
-          <div className='space-y-6'>
-            <a href='/' className='block'>
-              <img src='/fpt-logo.svg' alt='FPT Logo' className='h-12 mb-4' />
-            </a>
-            <div className='space-y-4'>
-              <h3 className='text-lg font-bold text-gray-900'>
+          <div className='space-y-4 md:space-y-6'>
+            <Link to='/' className='inline-block'>
+              <img src='/fpt-logo.svg' alt='FPT Logo' className='h-8 sm:h-10 md:h-12 mb-2 md:mb-4' />
+            </Link>
+            <div className='space-y-3 md:space-y-4'>
+              <h3 className='text-base md:text-lg font-bold text-gray-900'>
                 CÔNG TY TNHH MTV VIỄN THÔNG QUỐC TẾ FPT
               </h3>
-              <div className='space-y-3'>
+              <div className='space-y-2 md:space-y-3'>
                 <div className='flex items-start'>
-                  <FaMapMarkerAlt className='text-fpt-orange mt-1 mr-3' />
-                  <p className='text-sm'>
+                  <FaMapMarkerAlt className='text-fpt-orange mt-1 mr-2 md:mr-3 flex-shrink-0 text-base' />
+                  <p className='text-xs sm:text-sm'>
                     Tầng 9, Block A, tòa nhà FPT Cầu Giấy, số 10 Phạm Văn Bạch,
                     quận Cầu Giấy, TP. Hà Nội
                   </p>
                 </div>
                 <div className='flex items-center'>
-                  <FaPhone className='text-fpt-orange mr-3' />
-                  <p className='text-sm'>096.930.2332</p>
+                  <FaPhone className='text-fpt-orange mr-2 md:mr-3 flex-shrink-0 text-base' />
+                  <p className='text-xs sm:text-sm'>096.930.2332</p>
                 </div>
                 <div className='flex items-center'>
-                  <FaEnvelope className='text-fpt-orange mr-3' />
-                  <p className='text-sm'>hotro@fpt.com.vn</p>
+                  <FaEnvelope className='text-fpt-orange mr-2 md:mr-3 flex-shrink-0 text-base' />
+                  <p className='text-xs sm:text-sm'>hotro@fpt.com.vn</p>
                 </div>
               </div>
             </div>
@@ -38,151 +39,159 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className='text-lg font-bold text-gray-900 mb-6'>Về FPT Telecom</h3>
-            <ul className='space-y-3'>
+            <h3 className='text-base md:text-lg font-bold text-gray-900 mb-3 md:mb-6'>Về FPT Telecom</h3>
+            <ul className='space-y-2 md:space-y-3'>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/about' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Giới thiệu chung
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/history' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Lịch sử - Thành tựu
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/press' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Thông cáo báo chí
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/careers' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Tuyển dụng
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/contact' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Liên hệ
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/feedback' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Góp ý dịch vụ
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* Support */}
-          <div>
-            <h3 className='text-lg font-bold text-gray-900 mb-6'>Hỗ trợ khách hàng</h3>
-            <ul className='space-y-3'>
+          <div className='mt-6 sm:mt-0'>
+            <h3 className='text-base md:text-lg font-bold text-gray-900 mb-3 md:mb-6'>Hỗ trợ khách hàng</h3>
+            <ul className='space-y-2 md:space-y-3'>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/support' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Chăm sóc khách hàng
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/payment' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Thanh toán Online
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/terms' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Điều khoản sử dụng
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/privacy' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Quy định bảo mật
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/warranty' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Thông tin bảo hành
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/invoice' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Tra cứu hóa đơn
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* Sales Policy */}
-          <div>
-            <h3 className='text-lg font-bold text-gray-900 mb-6'>Chính sách bán hàng</h3>
-            <ul className='space-y-3'>
+          <div className='mt-6 lg:mt-0'>
+            <h3 className='text-base md:text-lg font-bold text-gray-900 mb-3 md:mb-6'>Chính sách bán hàng</h3>
+            <ul className='space-y-2 md:space-y-3'>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/policies' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Chính sách chung
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/delivery' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Chính sách giao nhận
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/warranty-policy' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Chính sách bảo hành
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/returns' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Chính sách đổi trả
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/payment-policy' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Chính sách thanh toán
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#' className='text-sm hover:text-fpt-orange transition-colors duration-200'>
+                <Link to='/inspection' className='text-xs sm:text-sm hover:text-fpt-orange transition-colors duration-200'>
                   Chính sách kiểm hàng
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Footer */}
-        <div className='mt-12 pt-8 border-t border-gray-700'>
-          <div className='flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0'>
-            <div className='flex space-x-6'>
+        <div className='mt-8 md:mt-12 pt-6 md:pt-8 border-t border-gray-200'>
+          <div className='flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0'>
+            <div className='flex flex-wrap justify-center md:justify-start gap-4 sm:gap-6'>
               <a 
                 href='https://hi.fpt.vn/' 
                 className='text-gray-400 hover:text-fpt-orange transition-colors duration-200'
-                aria-label="Facebook"
+                aria-label="Hi FPT"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <img src='images/hifpt.png' className='w-12 h-12'/>
+                <img src='/images/hifpt.png' className='w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12' alt="Hi FPT" />
               </a>
               <a 
-                href='#' 
+                href='https://youtube.com/' 
                 className='text-gray-400 hover:text-fpt-orange transition-colors duration-200'
                 aria-label="YouTube"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <img src='images/foot-youtube.png' className='w-12 h-12'/>
+                <img src='/images/foot-youtube.png' className='w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12' alt="YouTube" />
               </a>
               <a 
-                href='#' 
+                href='https://instagram.com/' 
                 className='text-gray-400 hover:text-fpt-orange transition-colors duration-200'
                 aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <img src='images/foot-instagram.png' className='w-12 h-12'/>
+                <img src='/images/foot-instagram.png' className='w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12' alt="Instagram" />
               </a>
               <a 
-                href='#' 
+                href='https://facebook.com/' 
                 className='text-gray-400 hover:text-fpt-orange transition-colors duration-200'
-                aria-label="Instagram"
+                aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <img src='images/foot-facebook.png' className='w-12 h-12'/>
+                <img src='/images/foot-facebook.png' className='w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12' alt="Facebook" />
               </a>
             </div>
 
-            <div className='text-sm text-gray-400'>
+            <div className='text-xs sm:text-sm text-gray-500 text-center md:text-right'>
               © {new Date().getFullYear()} FPT Telecom. All rights reserved.
             </div>
           </div>
