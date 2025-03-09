@@ -205,7 +205,7 @@ const Navbar = () => {
               top: navbarRef.current ? navbarRef.current.getBoundingClientRect().bottom : 'auto',
             }}
           >
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 p-4 lg:p-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 p-4 lg:pb-16 lg:px-24 lg:pt-8">
               {productsDropdownItems.map((item) => (
                 <div key={item.id} className="space-y-3">
                   <div className="flex items-center gap-3">
@@ -218,7 +218,7 @@ const Navbar = () => {
                     </div>
                     <h3 className="font-medium text-gray-900 text-base lg:text-lg">{item.title}</h3>
                   </div>
-                  <ul className="space-y-2 ml-9 md:ml-11 font-semibold text-gray-600">
+                  <ul className="space-y-2 ml-8 md:ml-9 font-semibold text-gray-600">
                     {item.children.map((child) => (
                       <li key={child.id}>
                         <Link
@@ -309,7 +309,7 @@ const Navbar = () => {
               top: navbarRef.current ? navbarRef.current.getBoundingClientRect().bottom : 'auto',
             }}
           >
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 p-4 lg:p-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 p-4 lg:p-6 lg:pb-16 lg:px-24 lg:pt-8">
               {supportDropdownItems.map((item) => (
                 <div key={item.id} className="space-y-3">
                   <div className="flex items-center gap-3">
@@ -322,7 +322,7 @@ const Navbar = () => {
                     </div>
                     <h3 className="font-medium text-gray-900 text-base lg:text-lg">{item.title}</h3>
                   </div>
-                  <ul className="space-y-2 ml-9 md:ml-11">
+                  <ul className="space-y-2 ml-9 md:ml-9">
                     {item.children.map((child) => (
                       <li key={child.id}>
                         <Link

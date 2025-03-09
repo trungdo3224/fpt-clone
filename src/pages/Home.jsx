@@ -10,7 +10,7 @@ const Home = () => {
     <>
       <Banner />
       <QuickLinks />
-      <div className='px-12 md:px-20 xl:px-32 lg:py-16 box-border'>
+      <div className='flex flex-col px-12 md:px-20 xl:px-32 py-16 box-border space-y-24'>
         <PackageSection />
         <CategorySection />
         <PromotionBanners />
@@ -21,5 +21,3 @@ const Home = () => {
 };
 
 export default Home;
-
-//

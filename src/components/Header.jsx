@@ -202,8 +202,8 @@ const Header = () => {
 
   return (
     <header className='sticky top-0 z-50'>
-      <div className='bg-fpt-blue text-white py-3 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 sm:hidden lg:block'>
-        <div className='container mx-auto flex justify-between items-center text-xs'>
+      <div className='bg-fpt-blue text-white py-3 px-12 md:px-20 xl:px-32 sm:hidden lg:block'>
+        <div className='flex justify-between items-center text-xs'>
           <div className='hidden sm:flex flex-row gap-2'>
             <a href='/personal' className='hover:text-gray-300'>
               <span>Khách hàng cá nhân</span>
