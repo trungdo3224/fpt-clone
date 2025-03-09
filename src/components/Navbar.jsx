@@ -390,7 +390,7 @@ const Navbar = () => {
 
         {/* Mobile menu button */}
         <button
-          className="md:flex hover:text-fpt-orange p-2"
+          className="md:flex lg:hidden hover:text-fpt-orange p-2"
           onClick={toggleMobileMenu}
           aria-label="Open menu"
         >

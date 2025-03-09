@@ -5,25 +5,25 @@ const NewsSection = () => {
     {
       id: 1,
       title: 'Vui hội Halloween cùng Hi-FPT: 1 chạm đến đích, nhận ngay quà',
-      image: 'https://i.ibb.co/Qp9VKBM/halloween.jpg',
+      image: 'images/1200-675_-zalo.jpg',
       date: 'Ngày 30/10'
     },
     {
       id: 2,
       title: 'Những bộ phim không bỏ lỡ trên FPT Play trong tháng 10/2024',
-      image: 'https://i.ibb.co/Qp9VKBM/movies.jpg',
+      image: 'images/poster_chung.jpg',
       date: 'Ngày 15/10'
     },
     {
       id: 3,
       title: 'Cúp Quốc gia 2024/25 LMS trạnh vào mùa, bắt ngay tin vui',
-      image: 'https://i.ibb.co/Qp9VKBM/sports.jpg',
+      image: 'images/poster_chung.jpg',
       date: 'Ngày 20/10'
     },
     {
       id: 4,
       title: 'FPT và SolarWinds hợp tác cung cấp giải pháp giám sát toàn diện cho doanh nghiệp',
-      image: 'https://i.ibb.co/Qp9VKBM/business-news.jpg',
+      image: 'images/22102422.jpg',
       date: 'Ngày 25/10'
     }
   ];
