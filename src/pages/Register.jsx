@@ -57,7 +57,6 @@ const Register = () => {
 
   return (
     <div className='min-h-screen bg-gradient-to-b from-blue-50 to-white py-12'>
-      <Toaster position='top-center' />
       <div className='container mx-auto px-4 max-w-6xl'>
         {/* Header Section */}
         <motion.div

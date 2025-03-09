@@ -18,6 +18,7 @@ function App() {
   // We don't need routesList for mapping routes anymore
   return (
     <div className='min-h-screen bg-white'>
+      <Toaster position='top-center' />
       <Header />
       <Routes>
         {/* Define your explicit routes */}
@@ -33,7 +34,7 @@ function App() {
         <Route path='/fsafe' element={<FsafePage />} />
         <Route path='/fsafe-go' element={<FsafePage />} />
         <Route path='/fptmedicare' element={<MedicarePage />} />
-        
+
         {/* Catch-all route for any undefined paths */}
         <Route path='*' element={<UnderDevelopment />} />
       </Routes>
