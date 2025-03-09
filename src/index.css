@@ -15,10 +15,6 @@ body {
   overflow-x: hidden;
 }
 
-.banner-bg {
-  background-color: #e30613;
-}
-
 .package-card {
   transition: transform 0.3s ease;
 }
