@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaArrowUp } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const BackToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,17 +28,32 @@ const BackToTopButton = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <AnimatePresence>
       {isVisible && (
-        <button 
-          onClick={scrollToTop} 
-          className="bg-white border-2 border-fpt-blue text-fpt-blue rounded-full p-4 shadow-lg hover:bg-blue-50 hover:border-blue-700 hover:text-blue-700 transition-colors duration-200"
-          aria-label="Back to top"
+        <motion.div
+          className="fixed right-4 sm:right-6 md:right-8 z-40"
+          style={{ bottom: 'calc(var(--safe-bottom, 16px))' }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.2 }}
         >
-          <FaArrowUp className="text-2xl" />
-        </button>
+          <motion.button
+            onClick={scrollToTop}
+            className="bg-white border-2 border-fpt-blue text-fpt-blue rounded-full shadow-lg hover:bg-blue-50 hover:border-blue-700 hover:text-blue-700 transition-colors duration-200 flex items-center justify-center"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            aria-label="Back to top"
+            style={{
+              width: 'calc(var(--button-size, 40px) * 0.9)',
+              height: 'calc(var(--button-size, 40px) * 0.9)'
+            }}
+          >
+            <FaArrowUp className="text-base sm:text-lg md:text-xl" />
+          </motion.button>
+        </motion.div>
       )}
-    </div>
+    </AnimatePresence>
   );
 };
 
