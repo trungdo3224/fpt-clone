@@ -12,13 +12,15 @@ import FptPlay from './pages/FptPlay';
 import UnderDevelopment from './pages/UnderDevelopment';
 import FsafePage from './pages/FsafePage';
 import MedicarePage from './pages/MedicarePage';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
-  const routes = ['news', 'promotions', 'support', 'about', 'contact', 'loyalty', 'referral'];
+  // We don't need routesList for mapping routes anymore
   return (
     <div className='min-h-screen bg-white'>
       <Header />
       <Routes>
+        {/* Define your explicit routes */}
         <Route path='/' exact element={<Home />} />
         <Route path='/personal' element={<InternetPackages />} />
         <Route path='/family' element={<InternetPackages />} />
@@ -27,14 +29,13 @@ function App() {
         <Route path='/fptplay' element={<FptPlay />} />
         <Route path='/fptcamera' element={<FptPlay />} />
         <Route path='/fptsmarthome' element={<FptPlay />} />
-
         <Route path='/register' element={<Register />} />
         <Route path='/fsafe' element={<FsafePage />} />
         <Route path='/fsafe-go' element={<FsafePage />} />
         <Route path='/fptmedicare' element={<MedicarePage />} />
-        {routes.map((route, index) => (
-          <Route key={index} path={route} element={<UnderDevelopment />} />
-        ))}
+        
+        {/* Catch-all route for any undefined paths */}
+        <Route path='*' element={<UnderDevelopment />} />
       </Routes>
       <Footer />
       <BackToTopButton />
