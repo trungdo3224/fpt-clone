@@ -580,6 +580,13 @@ const InternetPackage = () => {
     []
   );
 
+  useEffect(() => {
+    setActiveTab({
+      id: defaultTabId,
+      banner: tabs.find((tab) => tab.id === defaultTabId).banner,
+    })
+  },[location.pathname])
+
   // Compute active sections from initSections based on activeTab
   const activeSections = useMemo(() => {
     const sectionObj = initSections.find((sec) => sec[activeTab.id]);

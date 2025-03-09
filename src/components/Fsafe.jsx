@@ -262,7 +262,12 @@ const Fsafe = () => {
     ],
     []
   );
-
+  useEffect(() => {
+    setActiveTab({
+      id: defaultTabId,
+      banner: tabs.find((tab) => tab.id === defaultTabId).banner,
+    });
+  }, [location.pathname]);
   // Compute active sections from initSections based on activeTab
   const activeSections = useMemo(() => {
     const sectionObj = initSections.find((sec) => sec[activeTab.id]);
@@ -316,12 +321,14 @@ const Fsafe = () => {
       </div>
 
       <div className='mx-auto mt-6'>
-
         {/* Render sections for the active tab */}
         {activeSections.map((item) => {
           const { id, title, subTitle, packages } = item;
           return (
-            <div key={id} className="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-4">
+            <div
+              key={id}
+              className='px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-4'
+            >
               <div className='m-16'>
                 <div className='container mx-auto px-4'>
                   <div className='text-center text-white'>

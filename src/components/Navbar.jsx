@@ -92,7 +92,7 @@ const Navbar = () => {
       icon: <img src='images/icon-safe.png' className='w-6 h-6' />,
       children: [
         { id: 1, title: 'F-Safe', href: '/fsafe' },
-        { id: 2, title: 'F-Safe Go', href: '/fsafego' },
+        { id: 2, title: 'F-Safe Go', href: '/fsafe-go' },
       ],
     },
     {

@@ -137,7 +137,7 @@ const initSections = [
               'Trang bị Modem wifi 6',
               'Trang bị Camera IQ3S kèm gói lưu trữ Cloud 3 ngày',
               'Tặng 1 thiết bị Access Point',
-              'Tiết kiệm đến 950.000đ so với mua lẻ'
+              'Tiết kiệm đến 950.000đ so với mua lẻ',
             ],
           },
           {
@@ -149,7 +149,7 @@ const initSections = [
               'Trang bị Modem wifi 6',
               'Trang bị Camera IQ3S kèm gói lưu trữ Cloud 3 ngày',
               'Tặng 1 thiết bị Access Point',
-              'Tiết kiệm đến 950.000đ so với mua lẻ'
+              'Tiết kiệm đến 950.000đ so với mua lẻ',
             ],
           },
           {
@@ -161,7 +161,7 @@ const initSections = [
               'Trang bị Modem wifi 6',
               'Trang bị Camera IQ3S kèm gói lưu trữ Cloud 3 ngày',
               'Tặng 1 thiết bị Access Point',
-              'Tiết kiệm đến 950.000đ so với mua lẻ'
+              'Tiết kiệm đến 950.000đ so với mua lẻ',
             ],
           },
           {
@@ -173,7 +173,7 @@ const initSections = [
               'Trang bị Modem wifi 6',
               'Trang bị Camera IQ3S kèm gói lưu trữ Cloud 7 ngày',
               'Tặng 1 thiết bị Access Point',
-              'Tiết kiệm đến 950.000đ so với mua lẻ'
+              'Tiết kiệm đến 950.000đ so với mua lẻ',
             ],
           },
         ],
@@ -363,7 +363,12 @@ const FptPlayPackage = () => {
     ],
     []
   );
-
+  useEffect(() => {
+    setActiveTab({
+      id: defaultTabId,
+      banner: tabs.find((tab) => tab.id === defaultTabId).banner,
+    });
+  }, [location.pathname]);
   // Compute active sections from initSections based on activeTab
   const activeSections = useMemo(() => {
     const sectionObj = initSections.find((sec) => sec[activeTab.id]);
