@@ -104,8 +104,8 @@ const Navbar = () => {
   ];
 
   const newsDropdownItems = [
-    { id: 1, title: 'Tin Tức', href: '/news' },
-    { id: 2, title: 'Khuyến Mãi', href: '/promotions' },
+    { id: 1, title: 'Tin Tức', href: '#' },
+    { id: 2, title: 'Khuyến Mãi', href: '#' },
   ];
 
   const supportDropdownItems = [
@@ -114,11 +114,11 @@ const Navbar = () => {
       title: 'Hỗ trợ thông tin',
       icon: <img src='images/icon-ho-tro-thong-tin.png' className='w-6 h-6' />,
       children: [
-        { id: 1, title: 'Câu hỏi thường gặp', href: '/support/faq' },
-        { id: 2, title: 'Hướng dẫn sử dụng', href: '/support/user-guide' },
-        { id: 3, title: 'Hướng dẫn thủ tục', href: '/support/procedures' },
-        { id: 4, title: 'Quản lý chất lượng dịch vụ', href: '/support/quality' },
-        { id: 5, title: 'Điều khoản bảo mật', href: '/support/privacy' },
+        { id: 1, title: 'Câu hỏi thường gặp', href: '#' },
+        { id: 2, title: 'Hướng dẫn sử dụng', href: '#' },
+        { id: 3, title: 'Hướng dẫn thủ tục', href: '#' },
+        { id: 4, title: 'Quản lý chất lượng dịch vụ', href: '#' },
+        { id: 5, title: 'Điều khoản bảo mật', href: '#' },
       ],
     },
     {
@@ -126,8 +126,8 @@ const Navbar = () => {
       title: 'Hỗ trợ kỹ thuật',
       icon: <img src='images/icon-ho-tro-ky-thuat.png' className='w-6 h-6' />,
       children: [
-        { id: 1, title: 'Hướng dẫn cài đặt', href: '/support/setup' },
-        { id: 2, title: 'Xử lý sự cố', href: '/support/troubleshoot' },
+        { id: 1, title: 'Hướng dẫn cài đặt', href: '#' },
+        { id: 2, title: 'Xử lý sự cố', href: '#' },
       ],
     },
     {
@@ -135,28 +135,28 @@ const Navbar = () => {
       title: 'Nhân viên hỗ trợ',
       icon: <img src='images/icon-lien-he-24-7.png' className='w-6 h-6' />,
       children: [
-        { id: 1, title: 'Tổng đài 24/7', href: '/support/hotline' },
-        { id: 2, title: 'Ứng dụng Hi FPT', href: '/support/hi-fpt' },
-        { id: 3, title: 'Kênh Zalo OA', href: '/support/zalo' },
+        { id: 1, title: 'Tổng đài 24/7', href: '#' },
+        { id: 2, title: 'Ứng dụng Hi FPT', href: '#' },
+        { id: 3, title: 'Kênh Zalo OA', href: '#' },
       ],
     },
     {
       id: 4,
       title: 'Phòng giao dịch',
       icon: <img src='images/device-message.png' className='w-6 h-6' />,
-      children: [{ id: 1, title: 'Địa điểm', href: '/support/locations' }],
+      children: [{ id: 1, title: 'Địa điểm', href: '#' }],
     },
   ];
 
   const promoteDropdownItems = [
-    { id: 1, title: 'Khách hàng thân thiết', href: '/loyalty' },
-    { id: 2, title: 'Giới thiệu bạn bè', href: '/referral' },
+    { id: 1, title: 'Khách hàng thân thiết', href: '#' },
+    { id: 2, title: 'Giới thiệu bạn bè', href: '#' },
   ];
 
   const othersDropdownItems = [
     { id: 1, title: 'Đăng Ký Online', href: '/register' },
-    { id: 2, title: 'Member FPT', href: '/member' },
-    { id: 3, title: 'Thanh Toán Online', href: '/payment' },
+    { id: 2, title: 'Member FPT', href: '#' },
+    { id: 3, title: 'Thanh Toán Online', href: '#' },
   ];
 
   const toggleMobileMenu = () => {

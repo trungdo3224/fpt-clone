@@ -34,9 +34,6 @@ function App() {
         <Route path='/fsafe' element={<FsafePage />} />
         <Route path='/fsafe-go' element={<FsafePage />} />
         <Route path='/fptmedicare' element={<MedicarePage />} />
-
-        {/* Catch-all route for any undefined paths */}
-        <Route path='*' element={<UnderDevelopment />} />
       </Routes>
       <Footer />
       <BackToTopButton />
