@@ -390,13 +390,14 @@ const Fsafe = () => {
               key={id}
               className='px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-4'
             >
-              <div className='m-16'>
-                <div className='container mx-auto px-4'>
-                  <div className='text-center text-white'>
-                    <h1 className='text-4xl md:text-4xl font-bold mb-4 text-gray-600'>
+              {/* Improved responsive margins and text sizing */}
+              <div className='my-6 sm:my-8 md:my-12 lg:my-16'>
+                <div className='container mx-auto px-2 sm:px-4'>
+                  <div className='text-center'>
+                    <h1 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 md:mb-4 text-gray-600 leading-tight'>
                       {title}
                     </h1>
-                    <p className='text-xl md:text-xl text-gray-400'>
+                    <p className='text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed'>
                       {subTitle}
                     </p>
                   </div>
