@@ -544,12 +544,14 @@ const InternetPackage = () => {
   const navigate = useNavigate();
   const { pathname } = location;
   const defaultTabId = pathname.split('/')[1] || 'personal';
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [activeTab, setActiveTab] = useState({
     id: defaultTabId,
-    banner: 'images/internetcanhann.webp',
+    banner: '',
+    smallBanner: ''
   });
 
-  // Memoize tabs to avoid unnecessary re-renders.
+  // Memoize tabs to avoid unnecessary re-renders
   const tabs = useMemo(
     () => [
       {
@@ -557,35 +559,52 @@ const InternetPackage = () => {
         label: 'Internet cá nhân',
         icon: FaWifi,
         banner: 'images/internetcanhann.webp',
+        smallBanner: 'images/m_internetcanhanm.webp'
       },
       {
         id: 'family',
         label: 'Internet gia đình',
         icon: FaHome,
         banner: 'images/bannerinternetgiadinhn.png',
+        smallBanner: 'images/m_internetgiadinhm.png'
       },
       {
         id: 'gaming',
         label: 'Internet game thủ',
         icon: FaGamepad,
         banner: 'images/bannerinternetgame.png',
+        smallBanner: 'images/m_internetgamethum.png'
       },
       {
         id: 'business',
         label: 'Internet doanh nghiệp',
         icon: FaBuilding,
         banner: 'images/internetdoanhnghiepn.webp',
+        smallBanner: 'images/m_internetdoanhnghiep.webp'
       },
     ],
     []
   );
 
+  // Handle screen resize to update isMobile state
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Set active tab when route changes or component mounts
+  useEffect(() => {
+    const tabInfo = tabs.find((tab) => tab.id === defaultTabId) || tabs[0];
     setActiveTab({
-      id: defaultTabId,
-      banner: tabs.find((tab) => tab.id === defaultTabId).banner,
-    })
-  },[location.pathname])
+      id: tabInfo.id,
+      banner: tabInfo.banner,
+      smallBanner: tabInfo.smallBanner
+    });
+  }, [location.pathname, tabs, defaultTabId]);
 
   // Compute active sections from initSections based on activeTab
   const activeSections = useMemo(() => {
@@ -605,18 +624,51 @@ const InternetPackage = () => {
   const handleTabClick = useCallback(
     (tab) => {
       navigate(`/${tab.id}`, { replace: true });
-      setActiveTab({ id: tab.id, banner: tab.banner });
+      setActiveTab({ 
+        id: tab.id, 
+        banner: tab.banner,
+        smallBanner: tab.smallBanner 
+      });
     },
     [navigate]
   );
 
   return (
     <>
-      {/* Banner Section */}
+      {/* Banner Section with responsive image handling */}
       <div
-        className='bg-no-repeat bg-cover bg-center py-16 h-[28rem]'
-        style={{ backgroundImage: `url(${activeTab.banner})` }}
-      />
+        className='relative bg-no-repeat bg-cover bg-center py-16'
+        style={{
+          height: isMobile ? '300px' : '400px',
+          backgroundImage: `url(${isMobile ? activeTab.smallBanner : activeTab.banner})`
+        }}
+      >
+        {/* Gradient overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent">
+          <div className="container mx-auto px-4 sm:px-6 h-full flex flex-col justify-center">
+            <div className="max-w-xl">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-4 text-shadow">
+                {activeTab.id === 'personal' && "Internet Cá Nhân FPT"}
+                {activeTab.id === 'family' && "Internet Gia Đình FPT"}
+                {activeTab.id === 'gaming' && "Internet Gaming FPT"}
+                {activeTab.id === 'business' && "Internet Doanh Nghiệp FPT"}
+              </h1>
+              
+              <p className="text-sm sm:text-base md:text-lg text-white text-shadow">
+                Tốc độ cao - Ổn định - Giá hợp lý
+              </p>
+              
+              <button 
+                onClick={() => navigate('/register')}
+                className="mt-4 sm:mt-6 bg-fpt-orange text-white px-5 py-2.5 rounded-lg hover:bg-orange-600 transition-colors shadow-lg"
+              >
+                Đăng ký ngay
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Tabs */}
       <div className='flex flex-row justify-center bg-white rounded-xl shadow-lg p-2'>
         <div className='grid grid-cols-2 md:grid-cols-4 gap-2'>

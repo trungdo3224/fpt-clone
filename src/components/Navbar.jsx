@@ -168,6 +168,11 @@ const Navbar = () => {
     setMobileSubmenuOpen(mobileSubmenuOpen === menu ? '' : menu);
   };
 
+  const handleLinkClick = () => {
+    setMobileMenuOpen(false);
+    setMobileSubmenuOpen('');
+  };
+
   const deviceSpecificClass = isIpadMiniPortrait
     ? 'navbar-ipad-mini-portrait'
     : isIpadMiniLandscape
@@ -470,7 +475,7 @@ const Navbar = () => {
                           <ul className="space-y-2 pl-7">
                             {item.children.map((child) => (
                               <li key={child.id}>
-                                <Link to={child.href} className="text-gray-600 hover:text-fpt-orange">
+                                <Link to={child.href} className="text-gray-600 hover:text-fpt-orange" onClick={handleLinkClick}>
                                   {child.title}
                                 </Link>
                               </li>
@@ -511,7 +516,7 @@ const Navbar = () => {
                         <Link
                           key={item.id}
                           to={item.href}
-                          className="block text-gray-600 hover:text-fpt-orange py-1"
+                          className="block text-gray-600 hover:text-fpt-orange py-1" onClick={handleLinkClick}
                         >
                           {item.title}
                         </Link>
@@ -549,7 +554,7 @@ const Navbar = () => {
                         <Link
                           key={item.id}
                           to={item.href}
-                          className="block text-gray-600 hover:text-fpt-orange py-1"
+                          className="block text-gray-600 hover:text-fpt-orange py-1" onClick={handleLinkClick}
                         >
                           {item.title}
                         </Link>
@@ -598,7 +603,7 @@ const Navbar = () => {
                           <ul className="space-y-2 pl-7">
                             {item.children.map((child) => (
                               <li key={child.id}>
-                                <Link to={child.href} className="text-gray-600 hover:text-fpt-orange">
+                                <Link to={child.href} className="text-gray-600 hover:text-fpt-orange" onClick={handleLinkClick}>
                                   {child.title}
                                 </Link>
                               </li>
@@ -639,7 +644,7 @@ const Navbar = () => {
                         <Link
                           key={item.id}
                           to={item.href}
-                          className="block text-gray-600 hover:text-fpt-orange py-1"
+                          className="block text-gray-600 hover:text-fpt-orange py-1" onClick={handleLinkClick}
                         >
                           {item.title}
                         </Link>

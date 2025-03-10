@@ -336,12 +336,31 @@ const FptPlayPackage = () => {
   const navigate = useNavigate();
   const { pathname } = location;
   const defaultTabId = pathname.split('/')[1] || 'fptplay';
+  
+  // Add isMobile state to track screen size
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  
+  // Update activeTab state to include smallBanner
   const [activeTab, setActiveTab] = useState({
     id: defaultTabId,
-    banner: 'images/internetcanhann.webp',
+    banner: '',
+    smallBanner: ''
   });
 
-  // Memoize tabs to avoid unnecessary re-renders.
+  // Add useEffect for screen size detection
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Check initial size
+    handleResize();
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Memoize tabs to avoid unnecessary re-renders
   const tabs = useMemo(
     () => [
       {
@@ -349,28 +368,36 @@ const FptPlayPackage = () => {
         label: 'Truyền hình FPT Play',
         icon: FaTv,
         banner: 'images/bannergoixmashomepage.webp',
+        smallBanner: 'images/bannergoixmashomepagem.webp',
       },
       {
         id: 'fptcamera',
         label: 'FPT Camera',
-        icon: MdOutlineVideoCameraFront ,
+        icon: MdOutlineVideoCameraFront,
         banner: 'images/fptcameramua1duoc3new.jpg',
+        smallBanner: 'images/fptcameramua1duoc3newm.jpg' // Fixed: should include "images/" prefix
       },
       {
         id: 'fptsmarthome',
         label: 'FPT Smart Home',
         icon: TbSmartHome,
         banner: 'images/bannersmarthome.png',
+        smallBanner: 'images/fptsmarthomem.png',
       },
     ],
     []
   );
+
+  // Update useEffect to set both banner and smallBanner
   useEffect(() => {
+    const currentTab = tabs.find((tab) => tab.id === defaultTabId) || tabs[0];
     setActiveTab({
       id: defaultTabId,
-      banner: tabs.find((tab) => tab.id === defaultTabId).banner,
+      banner: currentTab.banner,
+      smallBanner: currentTab.smallBanner
     });
-  }, [location.pathname]);
+  }, [defaultTabId, location.pathname, tabs]);
+
   // Compute active sections from initSections based on activeTab
   const activeSections = useMemo(() => {
     const sectionObj = initSections.find((sec) => sec[activeTab.id]);
@@ -386,55 +413,63 @@ const FptPlayPackage = () => {
     setIsModalOpen(true);
   }, []);
 
+  // Update handleTabClick to include smallBanner
   const handleTabClick = useCallback(
     (tab) => {
       navigate(`/${tab.id}`, { replace: true });
-      setActiveTab({ id: tab.id, banner: tab.banner });
+      setActiveTab({ 
+        id: tab.id, 
+        banner: tab.banner,
+        smallBanner: tab.smallBanner
+      });
     },
     [navigate]
   );
   const fptSmarthome = (
     <>
+      {/* Banner Section with proper responsive height */}
       <div
-        className='bg-no-repeat bg-cover bg-center py-16 h-[32rem]'
-        style={{ backgroundImage: `url(${activeTab.banner})` }}
+        className='bg-no-repeat bg-cover bg-center h-48 xs:h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[32rem]'
+        style={{ backgroundImage: `url(${isMobile ? activeTab.smallBanner : activeTab.banner})` }}
       />
-      {/* Tabs */}
-      <div className='flex flex-row justify-center bg-white rounded-xl shadow-lg p-2 mb-4'>
-        <div className='grid grid-cols-3 md:grid-cols-3 gap-2'>
+      
+      {/* Tabs with consistent responsive styling */}
+      <div className='flex flex-row justify-center bg-white rounded-xl shadow-lg p-2 mx-4 sm:mx-6 md:mx-8 -mt-4 sm:-mt-6 relative z-10 mb-4'>
+        <div className='grid grid-cols-1 sm:grid-cols-3 gap-2 w-full'>
           {tabs.map((tab) => {
             const Icon = tab.icon;
             return (
               <button
                 key={tab.id}
                 onClick={() => handleTabClick(tab)}
-                className={`flex items-center justify-center p-4 rounded-lg transition-all ${
+                className={`flex items-center justify-center p-3 sm:p-4 rounded-lg transition-all ${
                   activeTab.id === tab.id
                     ? 'bg-blue-600 text-white'
                     : 'bg-white text-gray-600 hover:bg-gray-50'
                 }`}
               >
-                <Icon className='w-6 h-6 mr-3' />
-                <span className='font-medium'>{tab.label}</span>
+                <Icon className='w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3' />
+                <span className='font-medium text-xs sm:text-sm md:text-base'>{tab.label}</span>
               </button>
             );
           })}
         </div>
       </div>
-      {/* Smart Home Introduction Section */}
-      <div className='flex flex-col md:flex-row items-end justify-center px-4 md:px-8 2xl:px-32 lg:px-32 py-8 pb-24'>
-        <div className='flex flex-col w-full md:w-[50%] justify-start items-stretch gap-y-8 mb-8 md:mb-0 md:mr-8'>
-          <h2 className='text-xl text-[#ff6634] font-bold'>GIỚI THIỆU</h2>
-          <div className='flex flex-col items-start justify-center gap-y-4'>
-            <h3 className='font-semibold text-gray-700'>FPT Smart Home</h3>
-            <p className='text-gray-600'>
+      
+      {/* Smart Home Introduction Section with better responsive layout */}
+      <div className='flex flex-col md:flex-row items-start justify-center px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-4 sm:py-8 md:py-12 pb-8 sm:pb-12 md:pb-16 lg:pb-24'>
+        <div className='flex flex-col w-full md:w-[50%] justify-start items-stretch gap-y-4 sm:gap-y-6 md:gap-y-8 mb-6 sm:mb-8 md:mb-0 md:mr-8'>
+          <h2 className='text-lg sm:text-xl text-[#ff6634] font-bold'>GIỚI THIỆU</h2>
+          <div className='flex flex-col items-start justify-center gap-y-2 sm:gap-y-4'>
+            <h3 className='font-semibold text-gray-700 text-base sm:text-lg md:text-xl'>FPT Smart Home</h3>
+            <p className='text-sm sm:text-base text-gray-600'>
               Chúng tôi mong muốn mang đến một không gian sống thông minh và
               hiện đại với chi phí hợp lý nhất cho người dân Việt Nam.
             </p>
           </div>
-          <div className='flex flex-col items-start justify-center gap-y-4'>
-            <h3 className='font-semibold text-gray-700'>Tầm nhìn</h3>
-            <p className='text-gray-600'>
+          <div className='flex flex-col items-start justify-center gap-y-2 sm:gap-y-4'>
+            <h3 className='font-semibold text-gray-700 text-base sm:text-lg md:text-xl'>Tầm nhìn</h3>
+            <p className='text-sm sm:text-base text-gray-600'>
               FPT Smart Home hướng đến trở thành đơn vị phát triển nhà thông
               minh hàng đầu không chỉ trong nước mà còn trên Thế giới. Chúng tôi
               luôn tiên phong đổi mới, ứng dụng kỹ thuật hiện đại, tích hợp công
@@ -442,23 +477,30 @@ const FptPlayPackage = () => {
             </p>
           </div>
         </div>
-        <div className='w-full md:w-[50%] h-64 md:h-auto'>
+        <div className='w-full md:w-[50%] h-48 sm:h-56 md:h-64 lg:h-auto'>
           <img
             src='images/smarthome-about.png'
             className='object-contain object-center w-full h-full'
+            alt="FPT Smart Home"
+            loading="lazy"
           />
         </div>
       </div>
 
-      {/* Smart Home Overview Section */}
-      <div className='flex flex-col items-center justify-center px-4 md:px-8 lg:px-36 py-12 gap-y-12 pb-24 bg-gray-200'>
+      {/* Smart Home Overview Section with consistent responsive padding */}
+      <div className='flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-6 sm:py-8 md:py-10 lg:py-12 gap-y-6 sm:gap-y-8 md:gap-y-10 lg:gap-y-12 pb-8 sm:pb-12 md:pb-16 lg:pb-24 bg-gray-200'>
         <div className='flex flex-col w-full'>
-          <h1 className='text-xl md:text-2xl font-bold text-gray-800 text-center'>
+          <h1 className='text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 text-center'>
             Tổng quan giải pháp nhà thông minh FPT Smart Home
           </h1>
         </div>
-        <div className='flex flex-row justify-center items-center w-full rounded-xl'>
-          <img src='images/hi1200.jpg' className='object-cover rounded-xl' />
+        <div className='flex flex-row justify-center items-center w-full rounded-md sm:rounded-lg md:rounded-xl overflow-hidden'>
+          <img 
+            src='images/hi1200.jpg' 
+            className='object-cover w-full h-auto' 
+            alt="Giải pháp nhà thông minh FPT Smart Home"
+            loading="lazy"
+          />
         </div>
       </div>
     </>
@@ -466,49 +508,54 @@ const FptPlayPackage = () => {
   if (location.pathname === '/fptsmarthome') return fptSmarthome;
   return (
     <>
-      {/* Banner Section */}
+      {/* Banner Section with responsive image and height */}
       <div
-        className='bg-no-repeat bg-cover bg-center py-16 h-[32rem] '
-        style={{ backgroundImage: `url(${activeTab.banner})` }}
-      />
-      {/* Tabs */}
-      <div className='flex flex-row justify-center bg-white rounded-xl shadow-lg p-2 mb-4'>
-        <div className='grid grid-cols-3 md:grid-cols-3 gap-2'>
+        className='bg-no-repeat bg-cover bg-center h-48 xs:h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[32rem]'
+        style={{ 
+          backgroundImage: `url(${isMobile ? activeTab.smallBanner : activeTab.banner})` 
+        }}
+      >
+        {/* Optional content overlay if needed */}
+      </div>
+
+      {/* Tabs with responsive layout */}
+      <div className='flex flex-row justify-center bg-white rounded-xl shadow-lg p-2 mx-4 sm:mx-6 md:mx-8 -mt-4 sm:-mt-6 relative z-10'>
+        <div className='grid grid-cols-1 sm:grid-cols-3 gap-2 w-full'>
           {tabs.map((tab) => {
             const Icon = tab.icon;
             return (
               <button
                 key={tab.id}
                 onClick={() => handleTabClick(tab)}
-                className={`flex items-center justify-center p-4 rounded-lg transition-all ${
+                className={`flex items-center justify-center p-3 sm:p-4 rounded-lg transition-all ${
                   activeTab.id === tab.id
                     ? 'bg-blue-600 text-white'
                     : 'bg-white text-gray-600 hover:bg-gray-50'
                 }`}
               >
-                <Icon className='w-6 h-6 mr-3' />
-                <span className='font-medium'>{tab.label}</span>
+                <Icon className='w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3' />
+                <span className='font-medium text-xs sm:text-sm md:text-base'>{tab.label}</span>
               </button>
             );
           })}
         </div>
       </div>
-      <div className='px-32 py-4'>
+
+      {/* Replace the fixed-padding container with this responsive one */}
+      <div className='px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-4 sm:py-6 md:py-8'>
         {/* Render sections for the active tab */}
         {activeSections.map((item) => {
           const { id, title, subTitle, packages } = item;
           return (
             <div key={id}>
-              <div className='m-8 md:m-16'>
-                <div className=''>
-                  <div className='text-center text-white'>
-                    <h1 className='text-3xl md:text-4xl font-bold mb-4 text-gray-600'>
-                      {title}
-                    </h1>
-                    <p className='text-lg md:text-xl text-gray-400'>
-                      {subTitle}
-                    </p>
-                  </div>
+              <div className='my-4 sm:my-6 md:my-8 lg:my-12 xl:my-16'>
+                <div className='text-center'>
+                  <h1 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 md:mb-4 text-gray-600'>
+                    {title}
+                  </h1>
+                  <p className='text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 max-w-4xl mx-auto'>
+                    {subTitle}
+                  </p>
                 </div>
               </div>
               <Carousel

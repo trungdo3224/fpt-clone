@@ -59,24 +59,39 @@ const initSections = [
   },
 ];
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, onRegisterClick }) => {
   return (
-    <div className='bg-gray-200 rounded-lg shadow-md overflow-hidden'>
-      <div>
+    <div className='bg-white rounded-lg shadow-md overflow-hidden flex flex-col h-full transition-transform hover:shadow-lg hover:-translate-y-1'>
+      <div className='relative pt-[75%]'>
         <img
           src={product.image}
           alt={product.name}
-          className='w-full h-96 object-cover'
+          className='absolute inset-0 w-full h-full object-contain p-4'
+          loading="lazy"
         />
-        <div className='flex flex-col p-4'>
-          <h3 className='text-lg font-semibold mt-4'>{product.name}</h3>
-          <p className='text-gray-600 font-normal mt-2'>
-            Chỉ từ:{' '}
-            <span className='text-blue-700 font-light mt-2'>
-              {product.price}
-            </span>
-          </p>
-        </div>
+      </div>
+      <div className='flex flex-col p-4 flex-grow'>
+        <h3 className='text-base sm:text-lg font-semibold mb-2'>{product.name}</h3>
+        <p className='text-gray-600 text-sm sm:text-base mb-4'>
+          Chỉ từ:{' '}
+          <span className='text-blue-700 font-medium'>
+            {product.price}
+          </span>
+        </p>
+        <ul className='space-y-2 mb-4 flex-grow'>
+          {product.features?.map((feature, index) => (
+            <li key={index} className='flex items-start text-xs sm:text-sm text-gray-600'>
+              <span className='text-green-500 mr-2'>✓</span>
+              {feature}
+            </li>
+          ))}
+        </ul>
+        <button
+          onClick={() => onRegisterClick(product)}
+          className='mt-auto w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors'
+        >
+          Đặt mua ngay
+        </button>
       </div>
     </div>
   );
@@ -87,10 +102,25 @@ const Medicare = () => {
   const navigate = useNavigate();
   const { pathname } = location;
   const defaultTabId = pathname.split('/')[1] || 'fptmedicare';
+  
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  
   const [activeTab, setActiveTab] = useState({
     id: defaultTabId,
-    banner: 'images/fptmedicare.png',
+    banner: '',
+    smallBanner: ''
   });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const tabs = useMemo(
     () => [
@@ -99,10 +129,20 @@ const Medicare = () => {
         label: 'Medicare',
         icon: FaHandHoldingMedical,
         banner: 'images/fptmedicare.png',
+        smallBanner: 'images/fptmedicaremobile.png'
       },
     ],
     []
   );
+
+  useEffect(() => {
+    const currentTab = tabs.find((tab) => tab.id === defaultTabId) || tabs[0];
+    setActiveTab({
+      id: defaultTabId,
+      banner: currentTab.banner,
+      smallBanner: currentTab.smallBanner
+    });
+  }, [defaultTabId, tabs]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
@@ -115,7 +155,11 @@ const Medicare = () => {
   const handleTabClick = useCallback(
     (tab) => {
       navigate(`/${tab.id}`, { replace: true });
-      setActiveTab({ id: tab.id, banner: tab.banner });
+      setActiveTab({ 
+        id: tab.id, 
+        banner: tab.banner,
+        smallBanner: tab.smallBanner
+      });
     },
     [navigate]
   );
@@ -127,11 +171,20 @@ const Medicare = () => {
 
   return (
     <div className='min-h-screen bg-gradient-to-b from-blue-50 to-white'>
-      {/* Banner Section */}
+      {/* Banner Section with responsive image handling */}
       <div
-        className='bg-no-repeat bg-cover bg-center py-16 h-[28rem]'
-        style={{ backgroundImage: `url(${activeTab.banner})` }}
-      />
+        className='relative bg-no-repeat bg-cover bg-center py-16 h-48 xs:h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[32rem]'
+        style={{ 
+          backgroundImage: `url(${isMobile ? activeTab.smallBanner : activeTab.banner})` 
+        }}
+      >
+        {/* Optional overlay for better text visibility if needed */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent">
+          <div className="container mx-auto px-4 sm:px-6 h-full flex flex-col justify-end pb-8">
+            {/* Optional banner content can go here */}
+          </div>
+        </div>
+      </div>
 
       {/* Tabs */}
       <div className='flex flex-row justify-center bg-white rounded-xl shadow-lg p-2'>
@@ -142,13 +195,13 @@ const Medicare = () => {
               <button
                 key={tab.id}
                 onClick={() => handleTabClick(tab)}
-                className={`flex items-center justify-center p-4 rounded-lg transition-all ${
+                className={`flex items-center justify-center p-3 sm:p-4 rounded-lg transition-all ${
                   activeTab.id === tab.id
                     ? 'bg-blue-600 text-white'
                     : 'bg-white text-gray-600 hover:bg-gray-50'
                 }`}
               >
-                <Icon className='w-6 h-6 mr-3' />
+                <Icon className='w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3' />
                 <span className='font-medium'>{tab.label}</span>
               </button>
             );
@@ -156,21 +209,27 @@ const Medicare = () => {
         </div>
       </div>
 
-      <div className='mx-auto px-32 py-12'>
+      <div className='mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-8 sm:py-12'>
         {activeSections.map((section) => (
-          <div key={section.id} className='mb-24'>
-            <div className='flex flex-col gap-y-2 text-center mb-12'>
-              <h1 className='text-4xl font-bold text-gray-800 mb-4'>
+          <div key={section.id} className='mb-12 sm:mb-16 md:mb-24'>
+            <div className='flex flex-col gap-y-2 text-center mb-8 sm:mb-12'>
+              <h1 className='text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2 sm:mb-4'>
                 {section.title}
               </h1>
-              <p className='text-4xl font-bold text-gray-800 mb-4'>
-                {section.subTitle}
-              </p>
-              <p className='text-lg text-gray-800'>{section.description}</p>
+              {section.subTitle && (
+                <p className='text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-2 sm:mb-4'>
+                  {section.subTitle}
+                </p>
+              )}
+              {section.description && (
+                <p className='text-sm sm:text-base md:text-lg text-gray-800'>
+                  {section.description}
+                </p>
+              )}
             </div>
 
             {section.packages && (
-              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+              <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8'>
                 {section.packages.map((product) => (
                   <ProductCard
                     key={product.id}
@@ -182,22 +241,29 @@ const Medicare = () => {
             )}
 
             {section.image && (
-              <div className='mt-12'>
+              <div className='mt-8 sm:mt-12'>
                 <img
                   src={section.image}
                   alt='FPT Medicare App'
                   className={`w-full max-w-4xl mx-auto rounded-lg ${
                     section.id !== 2 && 'shadow-lg'
                   }`}
+                  loading="lazy"
                 />
               </div>
             )}
           </div>
         ))}
-        <div className='flex items-center justify-center'>
-          <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-5 px-10 rounded-full'>
-            Tải ứng dụng ngay
-          </button>
+        
+        <div className='flex items-center justify-center py-4 sm:py-6'>
+          <a 
+            href="https://apps.apple.com/vn/app/fpt-medicare/id1590765695" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 sm:py-4 md:py-5 px-6 sm:px-8 md:px-10 rounded-full transition-colors text-sm sm:text-base'
+          >
+            Tải ứng dụng ngay
+          </a>
         </div>
       </div>
 
