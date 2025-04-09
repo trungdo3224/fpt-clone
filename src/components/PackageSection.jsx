@@ -28,7 +28,7 @@ const PackageSection = () => {
       id: 2,
       name: 'Internet GIGA',
       speed: '150',
-      price: '165,000đ',
+      price: '210,000đ',
       backgroundImage: '/images/goiinternetgigan.webp',
       features: [
         'Tốc độ Download/Upload 150Mbps',
@@ -40,7 +40,7 @@ const PackageSection = () => {
       id: 3,
       name: 'Internet SKY',
       speed: '1',
-      price: '195,000đ',
+      price: '220,000đ',
       backgroundImage: 'images/internetsky.webp',
       features: [
         'Tốc độ Download/Upload 1Gbps',
@@ -52,7 +52,7 @@ const PackageSection = () => {
       id: 4,
       name: 'Gói F-Game',
       speed: '1',
-      price: '200,000đ',
+      price: '250,000đ',
       backgroundImage: 'images/goifgamen.webp',
       features: [
         'Tích hợp gói Ultra Fast hỗ trợ tốc độc cao',
@@ -64,7 +64,7 @@ const PackageSection = () => {
       id: 5,
       name: 'Internet META',
       speed: '1',
-      price: '315,000đ',
+      price: '310,000đ',
       backgroundImage: 'images/goiinternetmetan.webp',
       features: [
         'Trang bị Modem Wi-Fi 6',
